@@ -1,4 +1,4 @@
-# tfg-fomo
+# tfg-fomo Adrià Hermini
 
 ## Project setup
 ```
