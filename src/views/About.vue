@@ -9,7 +9,7 @@
       <b-container class="bv-example-row">
         <b-row align-h="between">
           <b-col cols="6"><b-button @click="home">M'he ha passado</b-button></b-col>
-          <b-col cols="6"><b-button variant="outline-primary">No m'he ha passado</b-button></b-col>
+          <b-col cols="6"><b-button to='/concept/1' variant="outline-primary">No m'he ha passado</b-button></b-col>
         </b-row>
       </b-container>
       
