@@ -48,4 +48,11 @@
   opacity: 0
 }
 
+p{
+  font-size: 20px;
+}
+
+b-button{
+  font-size:30px;
+}
 </style>
