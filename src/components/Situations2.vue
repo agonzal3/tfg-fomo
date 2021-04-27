@@ -40,7 +40,7 @@
                 <span v-if="resoult < 2">{{respuestas[1].text}}</span>
             </p>
             <p>Las que estavan a la izquiera eran las respuestas que presentavan signos de FoMO.</p>
-            <b-button id='leaft'>Hello</b-button>
+            <b-button id='leaft' @click="$emit('enlarge-text')">Hello</b-button>
         </div>
     </div>
 </template>
@@ -52,6 +52,7 @@
 
 export default {
     name:'Concept1',
+    props: ['view'],
     data(){
         return {
             show: true,
@@ -74,7 +75,6 @@ export default {
             ]
         }
     },
-    //props: ['listdata','counter'],
     methods:{
         getimage(){
             return this.lista[this.counter].imagen
@@ -110,6 +110,10 @@ export default {
                 this.show = !this.show;
                 setTimeout(() => this.show = !this.show, 250);
             }
+        },
+        destroy(){
+            this.$emit('view', 'HelloWorld')
+            console.log('Finish');
         }
         
     },
@@ -119,14 +123,8 @@ export default {
     mounted(){
         console.log('Mounted')
     },
-    updated(){
-        console.log(this.counter);
-        // if(this.counter == this.lista.length-1){
-        //     this.$destroy();
-        // }
-    },
     beforeDestroy(){
-        console.log('beforeDestroy');
+        
     },
     destroyed(){
         console.log('destroy');

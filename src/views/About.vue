@@ -6,11 +6,13 @@
         <b-col class="content" cols="9">
           
           <!-- <Concept1 /> -->
-          <Concept1 v-if="steps === 1" />
+          <!-- <Concept1 v-if="steps === 1" /> -->
      
 
-          <HelloWorld v-if="steps === 2" />
-
+          <!-- <HelloWorld v-if="steps === 2" /> -->
+          <transition name="component-fade" mode="out-in">
+            <component v-bind:is="view" v-on:enlarge-text="onEnlargeText"></component>
+          </transition>
 
           <!-- <b-container class="bv-example-row">
             <b-row align-h="between">
@@ -32,7 +34,9 @@ export default {
     name: 'About',
     data(){
         return {
-            steps: 1,
+            steps: 0,
+            view:'Concept1',
+            xx: []
         }
     },
     components: {
@@ -40,9 +44,17 @@ export default {
         HelloWorld
     },
     methods:{
-        actualstate(){
-
+        onEnlargeText() {
+          this.steps++;
+          this.view = this.xx[this.steps].name;
         }
+    },
+    created(){
+      this.xx = Object.values(this.$options.components)
+      console.log(this.xx);
+    },
+    updated(){
+      console.log('Hello');
     }
 
 }
@@ -62,4 +74,13 @@ export default {
   height:100vh;
 
 }
+
+.component-fade-enter-active, .component-fade-leave-active {
+  transition: opacity .3s ease;
+}
+.component-fade-enter, .component-fade-leave-to
+/* .component-fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
 </style>
