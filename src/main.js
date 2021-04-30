@@ -3,12 +3,17 @@ import App from './App.vue'
 import store from './store'
 import router from './router'
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
+import VueNumericInput from 'vue-numeric-input';
+import confetti from 'canvas-confetti';
+ 
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
+
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
+Vue.use(VueNumericInput)
 
 Vue.config.productionTip = false
 

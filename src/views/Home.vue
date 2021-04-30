@@ -1,9 +1,9 @@
 <template>
     <div class="home">
       <img alt="Vue logo" src="../assets/logo.png">
-      <h1>Presentatión</h1>
-      <h3>Queres saber como puedes salvar el futuro?</h3>
-      <h4>Antes de jugar escoje un idoma <br/> para poder entrar de lleno!!</h4>
+      <h1>Presentatión <br/> Presentation</h1>
+      <h3>Quieres saber como puedes salvar el futuro?  <br/> Do you want to know how you can save the future??</h3>
+      <h4>Antes de jugar escoje un idoma <br/> Before play plis chose a language </h4>
 
       <b-button to="/play">Español</b-button>
       <b-button>English</b-button>

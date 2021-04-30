@@ -29,6 +29,7 @@
 <script>
 import Concept1 from "../components/Situations2";
 import HelloWorld from "../components/HelloWorld";
+import Concept2 from "../components/Definition";
 
 export default {
     name: 'About',
@@ -41,7 +42,8 @@ export default {
     },
     components: {
         Concept1,
-        HelloWorld
+        HelloWorld,
+        Concept2
     },
     methods:{
         onEnlargeText() {
