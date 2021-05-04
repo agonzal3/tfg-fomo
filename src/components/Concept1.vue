@@ -1,11 +1,11 @@
 <template>
     <div class="position">
-        <h1>Te ha passado alguna vez?</h1>
+        <h1 v-if="!show2">Te ha passado alguna vez?</h1>
 
         <transition name="slide-fade">
             <div v-if="show">
                 <!-- <img src=this.getimage> -->
-                <img src="../assets/logo.png">
+                <img :src="lista[counter].imagen">
                 <!-- <p>{{getimage()}}</p> -->
                 <div v-if="counter < lista.length">
                     <p>{{lista[counter].text}}</p>
@@ -32,23 +32,29 @@
                     
                 </b-container>
             </div>
-        </transition>
-        <div v-if="counter == lista.length">
-            <p>De las anteriores situaciones has mostrado signos de FoMO en {{resoult}} de 4.
-                <span v-if="resoult >= 2">{{respuestas[0].text}}</span>
-                <span v-if="resoult < 2">{{respuestas[1].text}}</span>
-            </p>
-            <iframe src="https://giphy.com/embed/ar4x1w44umngk" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+            <div v-if="show2">
 
-            <p>Las que estavan a la izquiera eran las respuestas que presentavan signos de FoMO.</p>
-            <b-button id='leaft' @click="$emit('enlarge-text')">Hello</b-button>
-        </div>
+                <p>De las anteriores situaciones has mostrado signos de FoMO en {{resoult}} de 4.
+                    <span v-if="resoult >= 2">{{respuestas[0].text}}</span>
+                    <span v-if="resoult < 2">{{respuestas[1].text}}</span>
+                </p>
+
+                <!-- <iframe src="https://giphy.com/embed/ar4x1w44umngk" width="100%" height="100%" frameBorder="0" class="giphy-embed" allowFullScreen></iframe> -->
+                <img :src="returnimage" alt="">
+                <p>Las que estavan a la izquiera eran las respuestas que presentavan signos de FoMO.</p>
+                <b-button @click="$emit('enlarge-text')">Next</b-button>
+            </div>
+        </transition>
     </div>
 </template>
 
 <script>
 //import { createCanvas, loadImage } from "canvas";
-
+import fomo_bed from "../assets/Conecpt1/fomoBed2.jpg";
+import fomo_like from "../assets/Conecpt1/fomoLike.jpg";
+import fomo_parents from "../assets/Conecpt1/fomoParents.jpg";
+import fomo_wakeup from "../assets/Conecpt1/fomoWakeup.jpg";
+import giftwin from "../assets/giphy.gif";
 
 
 export default {
@@ -57,15 +63,16 @@ export default {
     data(){
         return {
             show: true,
+            show2: false,
             lista:[
               {text:'Tendría que dormir porque mañana voy al instituto, pero puedo escuchar que recibo algún mensaje y ...',
-               imagen:'../assets/logo.png', aswer1:'respondo el mensaje y dejo el móvil encendido.', aswer2:'apago el mobil de golpe.'},
+               imagen: fomo_bed, aswer1:'respondo el mensaje y dejo el móvil encendido.', aswer2:'apago el mobil de golpe.'},
               {text:'Cuando me levanto de la cama lo primero que hago es ...',
-               imagen:'../assets/logo.png', aswer1:'coger el mobil para ver que se cuece en las redes sociales.', aswer2:'ir a desayunar o a mear.'},
+               imagen: fomo_wakeup, aswer1:'coger el mobil para ver que se cuece en las redes sociales.', aswer2:'ir a desayunar o a mear.'},
               {text:'He colgado una history o una publicación y ...',
-               imagen:'../assets/logo.png', aswer1:'estoy pendiente de los likes y comentarios que recibo.', aswer2:'no le doy importancia a las reaciones.'},
+               imagen: fomo_like, aswer1:'estoy pendiente de los likes y comentarios que recibo.', aswer2:'no le doy importancia a las reaciones.'},
               {text:'Estoy hablando con mis padres y recibo un mensaje, ...',
-               imagen:'../assets/logo.png', aswer1:'cojo el mobil para ver el mensaje.', aswer2:'me espero a terminar de hablar para responder.'}
+               imagen: fomo_parents, aswer1:'cojo el mobil para ver el mensaje.', aswer2:'me espero a terminar de hablar para responder.'}
             ],
             counter:0,
             puntuation:0,
@@ -78,38 +85,35 @@ export default {
     },
     methods:{
         getimage(){
-            return this.lista[this.counter].imagen
+            return giftwin
             
             //console.log(document.getElementById('mypic').setAttribute('src', xx))
             //console.log(xx)
 
             //return this.lista[this.counter].imagen;
         },
-        counterb(){
-            if(this.counter<this.lista.length-1){
-                console.log(this.counter++);
-            }else{
-                this.counter=0;
-            }
-
-        },
         correct(){
             this.puntuation += 10;
             this.counter++;
-            if(this.counter !== 4){
+            if(this.counter < 4){
                 this.show = !this.show;
                 setTimeout(() => this.show = !this.show, 250);
+            } else {
+                this.show = false;
+                setTimeout(() => this.show2 = true, 500);
             }
            
-        },
-            
+        },  
         wrong(){
             this.resoult +=1;
             this.puntuation -= 10;
             this.counter++;
-            if(this.counter !== 4){
+            if(this.counter < 4){
                 this.show = !this.show;
                 setTimeout(() => this.show = !this.show, 250);
+            } else {
+                this.show = false;
+                setTimeout(() => this.show2 = true, 500);
             }
         },
         destroy(){
@@ -117,6 +121,11 @@ export default {
             console.log('Finish');
         }
         
+    },
+    computed:{
+        returnimage(){
+            return giftwin;
+        }
     },
     created(){
         console.log('Created')
@@ -165,5 +174,11 @@ export default {
 /* .slide-fade-leave-active below version 2.1.8 */ {
   transform: translateX(10px);
   opacity: 0;
+}
+iframe {
+    pointer-events: none;
+}
+img {
+    max-width: 300px;
 }
 </style>
