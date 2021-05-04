@@ -46,9 +46,8 @@
 //import { createCanvas, loadImage } from "canvas";
 
 
-
 export default {
-    name:'Concept2',
+    name:'Concept3',
     data(){
         return {
             show: true,
@@ -85,7 +84,7 @@ export default {
             else text2="pequeño";
           }
           this.classe = 'wrong';
-          this.responce = "Estas "+text1+" de la respuesta y es un numero más"+text2;
+          this.responce = "Estas "+text1+" de la respuesta y es un numero más "+text2;
         }
       }
     }

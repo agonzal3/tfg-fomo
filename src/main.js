@@ -4,7 +4,8 @@ import store from './store'
 import router from './router'
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
 import VueNumericInput from 'vue-numeric-input';
-import confetti from 'canvas-confetti';
+// import confetti from 'canvas-confetti';
+
  
 
 import 'bootstrap/dist/css/bootstrap.css'

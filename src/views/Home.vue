@@ -5,24 +5,23 @@
       <h3>Quieres saber como puedes salvar el futuro?  <br/> Do you want to know how you can save the future??</h3>
       <h4>Antes de jugar escoje un idoma <br/> Before play plis chose a language </h4>
 
-      <b-button to="/play">Español</b-button>
+      <b-button><router-link id="link" to="/play">Español</router-link></b-button>
       <b-button>English</b-button>
+     
     </div>
 
     
 </template>
 
-<!-- <script>
+ <script>
  // @ is an alias to /src
- import HelloWorld from '@/components/HelloWorld.vue'
 
  export default {
    name: 'Home',
-   components: {
-    HelloWorld
-  }
+   
 }
- </script> -->
+ </script> 
+
 
 <style scoped>
 .home {
@@ -44,5 +43,9 @@
 }
 .home button {
   margin: 25px;
+}
+#link {
+  color: white;
+  text-decoration: none;
 }
 </style>

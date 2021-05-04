@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Concept2',
   data(){
     return{
       lista:[
@@ -71,6 +71,7 @@ button {
   /* background-color: mediumaquamarine; */
   background-color: lemonchiffon;
   height: 100%;
+  color: black;
 }
 
 button:disabled,

@@ -17,9 +17,9 @@
                 <b-container class="bv-example-row">
                     <div v-if="counter < lista.length">
                         <b-row align-h="between">
-                            <b-col cols="6"><b-button @click="correct">{{lista[counter].aswer1}}</b-button></b-col>
+                            <b-col cols="6"><b-button @click="wrong">{{lista[counter].aswer1}}</b-button></b-col>
                             <!-- <b-col cols="6"><b-button to='/concept/1' variant="outline-primary">{{lista[counter].aswer2}}</b-button></b-col> -->
-                            <b-col cols="6"><b-button @click="wrong">{{lista[counter].aswer2}}</b-button></b-col>
+                            <b-col cols="6"><b-button @click="correct">{{lista[counter].aswer2}}</b-button></b-col>
                         </b-row>
                     </div>
                     <div v-if="counter == lista.length">
@@ -31,7 +31,6 @@
                     </div>
                     
                 </b-container>
-                
             </div>
         </transition>
         <div v-if="counter == lista.length">
@@ -39,6 +38,8 @@
                 <span v-if="resoult >= 2">{{respuestas[0].text}}</span>
                 <span v-if="resoult < 2">{{respuestas[1].text}}</span>
             </p>
+            <iframe src="https://giphy.com/embed/ar4x1w44umngk" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
             <p>Las que estavan a la izquiera eran las respuestas que presentavan signos de FoMO.</p>
             <b-button id='leaft' @click="$emit('enlarge-text')">Hello</b-button>
         </div>
@@ -93,7 +94,6 @@ export default {
 
         },
         correct(){
-            this.resoult +=1;
             this.puntuation += 10;
             this.counter++;
             if(this.counter !== 4){
@@ -104,6 +104,7 @@ export default {
         },
             
         wrong(){
+            this.resoult +=1;
             this.puntuation -= 10;
             this.counter++;
             if(this.counter !== 4){
@@ -112,7 +113,7 @@ export default {
             }
         },
         destroy(){
-            this.$emit('view', 'HelloWorld')
+            this.$emit('view', 'Concept2');
             console.log('Finish');
         }
         
@@ -140,7 +141,7 @@ export default {
   position:inherit;
   left: 50%;
   top: 50%;
-  border: 3px solid green;
+  /* border: 3px solid green; */
   transform: translate(-50%, -50%);
   width: 60%;
   text-align: center;

@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="play">
     <b-container fluid class="bv-example-row">
       <b-row>
         <b-col class="controls">1 of 3</b-col>
@@ -27,12 +27,13 @@
 </template>
 
 <script>
-import Concept1 from "../components/Situations2";
-import HelloWorld from "../components/HelloWorld";
-import Concept2 from "../components/Definition";
+import Concept1 from "../components/Concept1";
+import Concept2 from "../components/Concept2";
+import Concept3 from "../components/Concept3";
+
 
 export default {
-    name: 'About',
+    name: 'Play',
     data(){
         return {
             steps: 0,
@@ -42,8 +43,8 @@ export default {
     },
     components: {
         Concept1,
-        HelloWorld,
-        Concept2
+        Concept2,
+        Concept3
     },
     methods:{
         onEnlargeText() {
