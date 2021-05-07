@@ -1,18 +1,16 @@
 <template>
-    <div class="position">
-        <h1 v-if="!show2">Te ha passado alguna vez?</h1>
-
+    <div id="position">
+        <!-- <div :style='"margin-top:" + margin_top + "px"'> -->
         <transition name="slide-fade">
             <div v-if="show">
-                <!-- <img src=this.getimage> -->
-                <img :src="lista[counter].imagen">
-                <!-- <p>{{getimage()}}</p> -->
+                <h1>Te ha passado alguna vez?</h1>
+
                 <div v-if="counter < lista.length">
                     <p>{{lista[counter].text}}</p>
                 </div>
-                <div v-if="counter == lista.length">
-                    <p>{{lista[lista.length-1].text}}</p>
-                </div>
+
+                <img :src="lista[counter].imagen">
+
                 <p>{{puntuation}}</p>
                 <b-container class="bv-example-row">
                     <div v-if="counter < lista.length">
@@ -22,14 +20,7 @@
                             <b-col cols="6"><b-button @click="correct">{{lista[counter].aswer2}}</b-button></b-col>
                         </b-row>
                     </div>
-                    <div v-if="counter == lista.length">
-                        <b-row align-h="between">
-                            <b-col cols="6"><b-button disabled>{{lista[lista.length-1].aswer1}}</b-button></b-col>
-                            <!-- <b-col cols="6"><b-button to='/concept/1' variant="outline-primary">{{lista[counter].aswer2}}</b-button></b-col> -->
-                            <b-col cols="6"><b-button disabled>{{lista[lista.length-1].aswer2}}</b-button></b-col>
-                    </b-row>
-                    </div>
-                    
+
                 </b-container>
             </div>
             <div v-if="show2">
@@ -45,15 +36,16 @@
                 <b-button @click="$emit('enlarge-text')">Next</b-button>
             </div>
         </transition>
+        <!-- </div> -->
     </div>
 </template>
 
 <script>
 //import { createCanvas, loadImage } from "canvas";
-import fomo_bed from "../assets/Conecpt1/fomoBed2.jpg";
-import fomo_like from "../assets/Conecpt1/fomoLike.jpg";
-import fomo_parents from "../assets/Conecpt1/fomoParents.jpg";
-import fomo_wakeup from "../assets/Conecpt1/fomoWakeup.jpg";
+import fomo_bed from "../assets/Concept1/fomoBed2.jpg";
+import fomo_like from "../assets/Concept1/fomoLike.jpg";
+import fomo_parents from "../assets/Concept1/fomoParents.jpg";
+import fomo_wakeup from "../assets/Concept1/fomoWakeup.jpg";
 import giftwin from "../assets/giphy.gif";
 
 
@@ -86,7 +78,7 @@ export default {
     methods:{
         getimage(){
             return giftwin
-            
+
             //console.log(document.getElementById('mypic').setAttribute('src', xx))
             //console.log(xx)
 
@@ -97,64 +89,66 @@ export default {
             this.counter++;
             if(this.counter < 4){
                 this.show = !this.show;
-                setTimeout(() => this.show = !this.show, 250);
+                setTimeout(() => this.show = !this.show, 300);
             } else {
                 this.show = false;
-                setTimeout(() => this.show2 = true, 500);
+                setTimeout(() => this.show2 = true, 400);
             }
-           
-        },  
+
+        },
         wrong(){
             this.resoult +=1;
             this.puntuation -= 10;
             this.counter++;
             if(this.counter < 4){
                 this.show = !this.show;
-                setTimeout(() => this.show = !this.show, 250);
+                setTimeout(() => this.show = !this.show, 300);
             } else {
                 this.show = false;
-                setTimeout(() => this.show2 = true, 500);
+                setTimeout(() => this.show2 = true, 400);
             }
         },
         destroy(){
             this.$emit('view', 'Concept2');
             console.log('Finish');
         }
-        
+
     },
     computed:{
         returnimage(){
             return giftwin;
-        }
+        },
+        // margin_top(){
+        //     let height = this.$refs.infoBox.clientHeight;
+        //     return (100 - height)/2;
+        // }
     },
     created(){
         console.log('Created')
     },
     mounted(){
-        console.log('Mounted')
+        console.log('Mounted');
+        
+    },
+    updated(){
+        // In the HTML     <div id="position" ref="infoBox">
+
+        // let height = this.$refs.infoBox.clientHeight;
+        // console.log(height);
     },
     beforeDestroy(){
-        
+
     },
     destroyed(){
         console.log('destroy');
     }
-    
+
 }
 </script>
 
 
 <style scoped>
 
-.position{
-  position:inherit;
-  left: 50%;
-  top: 50%;
-  /* border: 3px solid green; */
-  transform: translate(-50%, -50%);
-  width: 60%;
-  text-align: center;
-}
 #leaft{
   position: absolute;
   left: 100%;
@@ -165,10 +159,10 @@ export default {
 /* Enter and leave animations can use different */
 /* durations and timing functions.              */
 .slide-fade-enter-active {
-  transition: all .3s ease;
+  transition: all .7s ease;
 }
 .slide-fade-leave-active {
-  transition: all .3s ease;
+  transition: all .7s ease;
 }
 .slide-fade-enter, .slide-fade-leave-to
 /* .slide-fade-leave-active below version 2.1.8 */ {

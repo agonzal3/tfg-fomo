@@ -1,14 +1,14 @@
 <template>
-    <div class="position">
+    <div id="position">
       <h2>Para saber en que punto estamos te reto a acertar la siguiente pregnta, en menos de tres intentos.</h2>
 
       <p>¿Cuál es la media de uso del móvil entre los jóvenes de España?</p>
 
       <!-- <input append="h"> -->
-      <b-container class="bv-example-row">
+      <b-container fluid>
         <b-row>
           <b-col md="6">
-            <b-input-group  size="lg" append="h">
+            <b-input-group  size="lg" append="h" style="justify-content: center">
                     <vue-numeric-input
                       id="style1"
                       :min="0" 
@@ -21,7 +21,7 @@
             </b-input-group>
           </b-col>
           <b-col md="6">
-            <b-input-group  size="lg" append="min">
+            <b-input-group  size="lg" append="min" style="justify-content: center">
               <vue-numeric-input
                       id="style2"
                       :min="0" 
@@ -93,15 +93,6 @@ export default {
 
 
 <style scoped>
-.position{
-  position: inherit;
-  left: 50%;
-  top: 50%;
-  /* border: 3px solid green; */
-  transform: translate(-50%, -50%);
-  width: 60%;
-  text-align: center;
-}
 /* Enter and leave animations can use different */
 /* durations and timing functions.              */
 .slide-fade-enter-active {

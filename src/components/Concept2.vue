@@ -1,5 +1,5 @@
 <template>
-  <div class="position">
+  <div id="position">
     <h2>Por lo tanto, podriamos decir que la FoMO es ...</h2>
     <b-container class="bv-example-row">
             <b-row class="align-items-stretch">
