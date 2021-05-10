@@ -10,6 +10,7 @@
                 <b-col class="h-600"><b-button id='button3' @click='resultado(3)' variant="light">{{lista[3].text}}</b-button></b-col>
             </b-row>
         </b-container>
+        <br>
         <div v-if="respuesta === 'correct'">
           <p>Muy bien!!</p>
           <b-button @click="$emit('enlarge-text')">Siguiente prueba</b-button>

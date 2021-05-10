@@ -58,13 +58,13 @@ export default {
             show2: false,
             lista:[
               {text:'Tendría que dormir porque mañana voy al instituto, pero puedo escuchar que recibo algún mensaje y ...',
-               imagen: fomo_bed, aswer1:'respondo el mensaje y dejo el móvil encendido.', aswer2:'apago el mobil de golpe.'},
+               imagen: fomo_bed, aswer1:'respondo el mensaje y dejo el móvil encendido, por si tengo más mensajes.', aswer2:'respondo el mensaje y apago el mobil para dormir y no responder más mensajes.'},
               {text:'Cuando me levanto de la cama lo primero que hago es ...',
                imagen: fomo_wakeup, aswer1:'coger el mobil para ver que se cuece en las redes sociales.', aswer2:'ir a desayunar o a mear.'},
               {text:'He colgado una history o una publicación y ...',
-               imagen: fomo_like, aswer1:'estoy pendiente de los likes y comentarios que recibo.', aswer2:'no le doy importancia a las reaciones.'},
+               imagen: fomo_like, aswer1:'estoy pendiente de los likes y comentarios que recibo.', aswer2:'por lo general no estoy pendeiente de las reacciones.'},
               {text:'Estoy hablando con mis padres y recibo un mensaje, ...',
-               imagen: fomo_parents, aswer1:'cojo el mobil para ver el mensaje.', aswer2:'me espero a terminar de hablar para responder.'}
+               imagen: fomo_parents, aswer1:'cojo el mobil para ver si el mensaje es urgente.', aswer2:'siendo consiciente de que tengo el mensaje, acabo de hablar con mis padres sin echarle un vistazo.'}
             ],
             counter:0,
             puntuation:0,

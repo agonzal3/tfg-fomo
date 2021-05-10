@@ -2,7 +2,7 @@
     <div id="position">
       <h2>Para saber en que punto estamos te reto a acertar la siguiente pregnta, en menos de tres intentos.</h2>
 
-      <p>¿Cuál es la media de uso del móvil entre los jóvenes de España?</p>
+      <p>¿Cuál es la media de uso del móvil entre los jóvenes (de 18 a 24 años) de España?</p>
 
       <!-- <input append="h"> -->
       <b-container fluid>
@@ -36,15 +36,30 @@
           </b-col>
         </b-row>
       </b-container>
-      <p>{{hours}}:{{minutes}}</p>
-      <b-button @click="calculatetime" :disabled="counter === 0">{{counter}} intentos</b-button>
-      <p :class="classe">{{responce}}</p>
+
+      <b-modal ref="my-modal" hide-footer centered>
+        <!-- <template #modal-title>
+          <h3 :class="classe">{{responce}}</h3>
+        </template> -->
+        <div class="d-block text-center">
+          <img style="width:450px" :src="image">
+          <h4 :class="classe">{{responce}}</h4>
+          <p v-if="counter === 0">Segun un el informe <i>"Smartphones: el impacto de la adicciónal móvil en los accidentes de tráfico"</i> que se realizo en septiembre de 2019, los jovenes entre 18 y 24 utilizan el móvil <b-badge variant="danger">6:48h al dia</b-badge>.</p>
+        </div>
+      </b-modal>
+
+      <p></p>
+      <b-button @click="calculatetime" :disabled="counter === 0 || classe === 'correct'">{{counter}} intentos</b-button>
+      <!-- <p :class="classe">{{responce}}</p> -->
     </div>
 </template>
 
 <script>
 //import { createCanvas, loadImage } from "canvas";
-
+import wrongAswer from "../assets/Concept3/wrong-aswer.jpg";
+import correctAswer from "../assets/Concept3/obama.jpg";
+import farwrongAswer from "../assets/Concept3/wrong-answer-try-again.jpg";
+import closewrongAswer from "../assets/Concept3/you-are-this-close.jpg";
 
 export default {
     name:'Concept3',
@@ -57,7 +72,8 @@ export default {
             realhoures:6,
             realminutes:50,
             responce:"",
-            counter:3
+            counter:3,
+            image:""
         }
     },
     //props: ['listdata','counter'],
@@ -70,22 +86,29 @@ export default {
         if(this.hours === this.realhoures && this.minutes === this.realminutes){
           this.responce = "Lo has acertado!!";
           this.classe = 'correct';
-        }else {
+          this.image = correctAswer;
+        }else if (this.counter>0){
           if(diferenceh === 0){
-            text1="creca";
             text2="grande";
-          }else if(Math.abs(diferenceh) <= 2){
-            text1="creca";
+            this.image = closewrongAswer;
+          }else if(Math.abs(diferenceh) <= 1){
+            this.image = closewrongAswer;
             if(diferenceh>0) text2="grande";
             else text2="pequeño";
           } else {
             text1="lejos";
+            this.image = farwrongAswer;
             if(diferenceh>0) text2="grande";
             else text2="pequeño";
+            this.responce = "Estas "+text1+" de la respuesta, prueva un numero más "+text2;
           }
           this.classe = 'wrong';
-          this.responce = "Estas "+text1+" de la respuesta y es un numero más "+text2;
+          if(text1 !== "lejos") this.responce = "Prueva un numero más "+text2;
+        } else {
+          this.image = wrongAswer;
+          this.responce = ""
         }
+        this.$refs['my-modal'].show();
       }
     }
 }
@@ -120,6 +143,9 @@ input{
 }
 .wrong{
   color: red;
+}
+h4{
+  margin-top: 10px;
 }
 
 </style>

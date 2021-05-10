@@ -43,6 +43,7 @@
 import Concept1 from "../components/Concept1";
 import Concept2 from "../components/Concept2";
 import Concept3 from "../components/Concept3";
+import Reason1 from "../components/Reasons1";
 
 
 export default {
@@ -57,7 +58,8 @@ export default {
     components: {
         Concept1,
         Concept2,
-        Concept3
+        Concept3,
+        Reason1
     },
     methods:{
         onEnlargeText() {
@@ -82,11 +84,11 @@ export default {
 <style scoped>
 .controls{
   background-color: #2c3e50;
-  
   /* position: absolute; */
   float: left;
   height:100vh;
   width: 300px;
+  min-height: 700px;
 
 }
 .content{
@@ -95,6 +97,7 @@ export default {
   width: calc(100% - 300px);
   padding: 10px;
   height:100vh;
+  min-height: 700px;
 
 }
 
