@@ -3,7 +3,7 @@
         <!-- <div :style='"margin-top:" + margin_top + "px"'> -->
         <transition name="slide-fade">
             <div v-if="show">
-                <h1>Te ha passado alguna vez?</h1>
+                <h1>Ha menudo te passado?</h1>
 
                 <div v-if="counter < lista.length">
                     <p>{{lista[counter].text}}</p>
