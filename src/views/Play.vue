@@ -44,6 +44,7 @@ import Concept1 from "../components/Concept1";
 import Concept2 from "../components/Concept2";
 import Concept3 from "../components/Concept3";
 import Reason1 from "../components/Reasons1";
+import Reason2 from "../components/Reasons2";
 
 
 export default {
@@ -51,7 +52,7 @@ export default {
     data(){
         return {
             steps: 0,
-            view:'Concept1',
+            view:'Reason2',
             xx: []
         }
     },
@@ -59,7 +60,8 @@ export default {
         Concept1,
         Concept2,
         Concept3,
-        Reason1
+        Reason1,
+        Reason2
     },
     methods:{
         onEnlargeText() {
