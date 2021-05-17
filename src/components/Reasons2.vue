@@ -1,29 +1,34 @@
 <template>
     <div style="display: flex">
-        <b-button variant="danger" class="bigbutton">Sintoma de la FoMO</b-button>
+        <b-button :disabled="timePassed>timeLimit-1" variant="danger" @click="syntomFoMO" class="bigbutton">Sintoma de la FoMO</b-button>
         <div class="center">
             <svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
                 <g class="circle">
                     <circle class="elypse" cx="50" cy="25" r="20"/>
-                    <text x="50%" y="50%" text-anchor="middle" fill="black" dy=".3em">{{formattedTimeLeft}}</text>
+                    <text style="color:green" x="50%" y="50%" text-anchor="middle" fill="black" dy=".3em">{{formattedTimeLeft}}</text>
                     <path
+                    :stroke-dasharray="circleDasharray"
+                    :class="remainingPathColor"
                     class="path-remaining"
                     d="
-                        M 20, 20
-                        m -45, 0
-                        a 45,45 0 1,0 90,0
-                        a 45,45 0 1,0 -90,0
+                        M 50, 25
+                        m -20, 0
+                        a 5,5 0 1,0 40,0
+                        a 5,5 0 1,0 -40,0
                     "></path>
                 </g>
             </svg>
             
-            <p>Hello</p>
+            <p>{{items[counter].text}}</p>
         </div>
-        <b-button variant="success" class="bigbutton" style="align-items: flex-end">NO Sintoma de la FoMO</b-button>
+        <b-button :disabled="timePassed>timeLimit-1" variant="success" @click="noSyntomFoMO" class="bigbutton" style="align-items: flex-end">NO Sintoma de la FoMO</b-button>
     </div>
 </template>
 
 <script>
+const FULL_DASH_ARRAY = 125;
+const WARNING_THRESHOLD = 10;
+const ALERT_THRESHOLD = 5;
 
 export default {
     name:'Reason2',
@@ -32,12 +37,23 @@ export default {
             timeLimit: 20,
             timePassed: 0,
             timerInterval: null,
+            counter:0,
 
             intro: 'Las redes sociales son muy populares entre los jóvenes, porque nosotros los humanos somos animales …',
             items:[
-                {id:0, title: 'Competencia', def:'Capacidad de participar y aportar en el mundo.', list:1},
-                {id:1, title: 'Autonomía', def:'Ser capaz de valersé por uno mismo, tener independencia personal.', list:1},
-                {id:2, title: 'Pertenencia', def:'Sentimiento de formar parte de un colectivo', list:1},
+                {id:0, text: 'No tener hobies', res:true},
+                {id:1, text: 'Tener los amigos lejos', res:true},
+                {id:2, text: 'Autoestima dependiente de las amstades', res:true},
+                {id:3, text: 'Aburrimiento', res:true},
+                {id:4, text: 'Notificaciones activas', res:true},
+                {id:5, text: 'No tener responsabilidades ni quehaceres', res:true},
+                {id:6, text: 'Ansiedad', res:true},
+                {id:7, text: 'Ser extrobertido', res:false},
+                {id:8, text: 'Padres controladores', res:false},
+                {id:9, text: 'Publicar contenido con frecuencia', res:false},
+                {id:10, text: 'Aydar a las tareas domesticas', res:false},
+                {id:11, text: 'Jugar a juegos del mobil', res:false},
+
             ]
         }
     },
@@ -56,12 +72,70 @@ export default {
                 seconds = `0${seconds}`
             }
             // The output in MM:SS format
-            return `${minutes}:${seconds}`
+            if(seconds > 0){
+                return `${minutes}:${seconds}`
+            } else{
+                return '0:00'
+            }
+        },
+        // Update the dasharray value as time passes, starting with 283
+        circleDasharray() {
+            return `${(this.timeFraction * FULL_DASH_ARRAY).toFixed(0)} 125`;
+        },
+        timeFraction() {
+            const rawTimeFraction = this.timeLeft / this.timeLimit
+            if(this.timeLeft>0){
+                return rawTimeFraction - (1 / this.timeLimit) * (1 - rawTimeFraction)
+            } else{
+                return 0
+            }
+      
+        },
+        colorCodes() {
+            return {
+                info: {
+                color: "green"
+                },
+                warning: {
+                color: "orange",
+                threshold: WARNING_THRESHOLD
+                },
+                alert: {
+                color: "red",
+                threshold: ALERT_THRESHOLD
+                }
+            }
+        },
+        remainingPathColor() {
+            const { alert, warning, info } = this.colorCodes;
+            if (this.timeLeft <= alert.threshold) {
+                return alert.color;
+            } else if (this.timeLeft <= warning.threshold) {
+                return warning.color;
+            } else {
+                return info.color;
+            }
         }
     },
     methods:{
         startTimer() {
             this.timerInterval = setInterval(() => (this.timePassed += 1), 1000);
+        },
+        syntomFoMO() {
+            if(this.items[this.counter].res === true){
+                console.log('Correct');
+            }else{
+                console.log('Wrong');
+            }
+            this.counter++;
+        },
+        noSyntomFoMO(){
+            if(this.items[this.counter].res === false){
+                console.log('Correct');
+            }else{
+                console.log('Wrong');
+            }
+            this.counter++;
         }
     },
     mounted() {
@@ -110,14 +184,22 @@ export default {
     /* Rounds the line endings to create a seamless circle */
     stroke-linecap: round;
     /* Makes sure the animation starts at the top of the circle */
-    transform: rotate(90deg);
+    transform: rotate(90deg) scaleY(-1);
     transform-origin: center;
     /* One second aligns with the speed of the countdown timer */
     transition: 1s linear all;
     /* Allows the ring to change color when the color value updates */
-    stroke: rgb(65, 184, 131);
+    stroke: currentColor;
   }
-  svg {
-    /* transform: scaleX(-1); */
+
+  .green{
+      color:rgb(65, 184, 131); 
+  }
+  .orange{
+      color:orange;
+  }
+
+  .red{
+      color:red;
   }
 </style>
