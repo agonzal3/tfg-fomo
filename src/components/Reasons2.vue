@@ -1,6 +1,6 @@
 <template>
     <div style="display: flex">
-        <b-button :disabled="timePassed>timeLimit-1" variant="danger" @click="syntomFoMO" class="bigbutton">Sintoma de la FoMO</b-button>
+        <b-button :disabled="timePassed>timeLimit || counter>items.length-1" variant="danger" @click="syntomFoMO(true)" class="bigbutton">Sintoma de la FoMO</b-button>
         <div class="center">
             <svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
                 <g class="circle">
@@ -18,10 +18,61 @@
                     "></path>
                 </g>
             </svg>
-            
-            <p>{{items[counter].text}}</p>
+            <h3>{{counter}}/{{items.length}}</h3>
+            <transition>
+                <div v-if="counter<items.length">{{items[counter].text}}</div>
+                <div v-else></div>
+            </transition>
         </div>
-        <b-button :disabled="timePassed>timeLimit-1" variant="success" @click="noSyntomFoMO" class="bigbutton" style="align-items: flex-end">NO Sintoma de la FoMO</b-button>
+        <b-button :disabled="timePassed>timeLimit || counter>items.length-1" variant="success" @click="syntomFoMO(false)" class="bigbutton" style="align-items: flex-end">NO Sintoma de la FoMO</b-button>
+        <b-modal size="lg" ref="my-modal" hide-header centered>
+            <h2 class="text-center">Resultado</h2>
+            <br> 
+            <div class="d-block">
+                <b-container>
+                    <b-row>
+                        <b-col>
+                            <h4>Symtoms of FoMO</h4>
+                            <ul>
+                                <div v-for="item in items" :key="item.id">
+                                    <li v-if="item.res === true">
+                                        {{ item.text }}
+                                        <span v-if="item.intercation === true">, <b-badge variant="success">Correct</b-badge></span>
+                                        <span v-else-if="item.intercation === false">, <b-badge variant="danger">Wrong</b-badge></span>
+                                        <span v-else>, <b-badge variant="secondary">Not done</b-badge></span>
+                                    </li>
+                                </div>
+                            </ul>
+                        </b-col>
+                        <b-col>
+                            <h4>NO Symtoms of FoMO</h4>
+                            <ul>
+                                <div v-for="item in items" :key="item.id">
+                                    <li v-if="item.res === false">
+                                        {{ item.text }}
+                                        <span v-if="item.intercation === true">, <b-badge variant="success">Correct</b-badge></span>
+                                        <span v-else-if="item.intercation === false">, <b-badge variant="danger">Wrong</b-badge></span>
+                                        <span v-else>, <b-badge variant="secondary">Not done</b-badge></span>
+                                    </li>
+                                </div>
+                            </ul>
+                        </b-col>
+                    </b-row>
+                </b-container>
+                <p class="text-center">Muy bien o no. Aqui tenomos los ejempols que han salido y algunos que no han salido y su clasificación. <br> 
+                Siguendo la linea de antes, los possibles sintomas son consequencias de la no satisfación de las 3 necessidades psicologicas anteriores: Comeptencia, Autonomia y Pertenencia.</p>
+            </div>
+            <template #modal-footer>
+                <div class="w-100">
+                <b-button
+                    variant="primary"
+                    class="float-right"
+                    @click="show=false">
+                    Exit
+                </b-button>
+                </div>
+            </template>
+        </b-modal>
     </div>
 </template>
 
@@ -38,28 +89,40 @@ export default {
             timePassed: 0,
             timerInterval: null,
             counter:0,
+            timestop:0,
+            show: true,
 
             intro: 'Las redes sociales son muy populares entre los jóvenes, porque nosotros los humanos somos animales …',
             items:[
-                {id:0, text: 'No tener hobies', res:true},
-                {id:1, text: 'Tener los amigos lejos', res:true},
-                {id:2, text: 'Autoestima dependiente de las amstades', res:true},
-                {id:3, text: 'Aburrimiento', res:true},
-                {id:4, text: 'Notificaciones activas', res:true},
-                {id:5, text: 'No tener responsabilidades ni quehaceres', res:true},
-                {id:6, text: 'Ansiedad', res:true},
-                {id:7, text: 'Ser extrobertido', res:false},
-                {id:8, text: 'Padres controladores', res:false},
-                {id:9, text: 'Publicar contenido con frecuencia', res:false},
-                {id:10, text: 'Aydar a las tareas domesticas', res:false},
-                {id:11, text: 'Jugar a juegos del mobil', res:false},
-
+                {id:0, text: 'No tener hobies', res:true, intercation: null},
+                {id:1, text: 'Tener los amigos lejos', res:true, interaction: null},
+                {id:2, text: 'Autoestima dependiente de las amstades', res:true, intercation: null},
+                {id:3, text: 'Aburrimiento', res:true, intercation:null},
+                {id:4, text: 'Notificaciones activas', res:true, intercation:null},
+                {id:5, text: 'No tener responsabilidades ni quehaceres', res:true, intercation:null},
+                {id:6, text: 'Ansiedad', res:true, intercation:null},
+                {id:7, text: 'Ser extrobertido', res:false, intercation:null},
+                {id:8, text: 'Padres controladores', res:false, intercation:null},
+                {id:9, text: 'Publicar contenido con frecuencia', res:false, intercation:null},
+                {id:10, text: 'Aydar a las tareas domesticas', res:false, intercation:null},
+                {id:11, text: 'Jugar a juegos del mobil', res:false, intercation:null},
             ]
         }
     },
     computed: {
         timeLeft() {
-            return this.timeLimit - this.timePassed
+            if(this.counter<this.items.length){
+                this.timestop = this.timePassed;
+                return this.timeLimit - this.timePassed
+            } else {
+                if(this.show===true){
+                    this.$refs['my-modal'].show();
+                } else {
+                    this.$refs['my-modal'].hide();
+                }
+                
+                return this.timeLimit - this.timestop
+            }
         },
         formattedTimeLeft() {
             const timeLeft = this.timeLeft
@@ -75,6 +138,7 @@ export default {
             if(seconds > 0){
                 return `${minutes}:${seconds}`
             } else{
+                this.$refs['my-modal'].show();
                 return '0:00'
             }
         },
@@ -87,9 +151,8 @@ export default {
             if(this.timeLeft>0){
                 return rawTimeFraction - (1 / this.timeLimit) * (1 - rawTimeFraction)
             } else{
-                return 0
+                return 0;
             }
-      
         },
         colorCodes() {
             return {
@@ -121,26 +184,21 @@ export default {
         startTimer() {
             this.timerInterval = setInterval(() => (this.timePassed += 1), 1000);
         },
-        syntomFoMO() {
-            if(this.items[this.counter].res === true){
-                console.log('Correct');
+        syntomFoMO(bool) {
+            if(this.items[this.counter].res === bool){
+                this.items[this.counter].intercation = true;
             }else{
-                console.log('Wrong');
+                this.items[this.counter].intercation = false;
             }
             this.counter++;
         },
-        noSyntomFoMO(){
-            if(this.items[this.counter].res === false){
-                console.log('Correct');
-            }else{
-                console.log('Wrong');
-            }
-            this.counter++;
-        }
     },
     mounted() {
         this.startTimer();
     },
+    created(){
+        this.items.sort(() => Math.random() - 0.5);
+    }
 }
 </script>
 
@@ -167,6 +225,24 @@ export default {
     /* top: 50%; */
     /* -ms-transform: translateY(-50%);
     transform: translateY(50%); */
+}
+.center div{
+    /* Style of the box */
+    border: solid 2px black;
+    width: 60%;
+    font-size: 25px;
+
+    /* Vertical position */
+    position: relative;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+
+    /* Horizontal Position */
+    top: 10%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(50%);
+
 }
 .circle{
     fill: none;

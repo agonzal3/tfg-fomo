@@ -72,9 +72,6 @@ export default {
     created(){
       this.xx = Object.values(this.$options.components)
       console.log(this.xx);
-    },
-    updated(){
-      console.log('Hello');
     }
 
 }
