@@ -28,8 +28,6 @@
 </template>
 
 <script>
-import draggable from 'vuedraggable'
-
 export default {
     name:'Reason1',
     data(){
