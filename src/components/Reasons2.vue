@@ -1,5 +1,6 @@
 <template>
     <div style="display: flex">
+    
         <b-button :disabled="timePassed>timeLimit || counter>items.length-1" variant="danger" @click="syntomFoMO(true)" class="bigbutton">Sintoma de la FoMO</b-button>
         <div class="center">
             <svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
@@ -64,12 +65,12 @@
             </div>
             <template #modal-footer>
                 <div class="w-100">
-                <b-button
-                    variant="primary"
-                    class="float-right"
-                    @click="show=false">
-                    Exit
-                </b-button>
+                    <b-button
+                        variant="primary"
+                        class="float-right"
+                        @click="show=false">
+                        Exit
+                    </b-button>
                 </div>
             </template>
         </b-modal>
@@ -80,19 +81,20 @@
 const FULL_DASH_ARRAY = 125;
 const WARNING_THRESHOLD = 10;
 const ALERT_THRESHOLD = 5;
+const TIME_DEFINED = 25;
 
 export default {
     name:'Reason2',
     data(){
         return{
-            timeLimit: 20,
+            timeLimit: TIME_DEFINED,
             timePassed: 0,
             timerInterval: null,
             counter:0,
             timestop:0,
             show: true,
+            componentKey: 0,
 
-            intro: 'Las redes sociales son muy populares entre los jóvenes, porque nosotros los humanos somos animales …',
             items:[
                 {id:0, text: 'No tener hobies', res:true, intercation: null},
                 {id:1, text: 'Tener los amigos lejos', res:true, interaction: null},
@@ -111,7 +113,7 @@ export default {
     },
     computed: {
         timeLeft() {
-            if(this.counter<this.items.length){
+            if(this.counter<this.items.length && this.timePassed<=TIME_DEFINED){
                 this.timestop = this.timePassed;
                 return this.timeLimit - this.timePassed
             } else {
@@ -191,7 +193,7 @@ export default {
                 this.items[this.counter].intercation = false;
             }
             this.counter++;
-        },
+        }
     },
     mounted() {
         this.startTimer();
