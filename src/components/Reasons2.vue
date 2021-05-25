@@ -81,7 +81,7 @@
 const FULL_DASH_ARRAY = 125;
 const WARNING_THRESHOLD = 10;
 const ALERT_THRESHOLD = 5;
-const TIME_DEFINED = 25;
+const TIME_DEFINED = 60;
 
 export default {
     name:'Reason2',
