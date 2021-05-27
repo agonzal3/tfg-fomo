@@ -25,7 +25,11 @@
                     <h4>{{items[backcount].solution.title}}</h4>
                     <p>{{items[backcount].solution.text}}</p>
 
-                    <p><b-button @click="nextnew" variant="warning">Siguiente noticia</b-button></p>
+                    <p>
+                        <b-button  v-if="backcount < items.length-1" @click="nextnew" variant="warning">Siguiente noticia</b-button>
+                        <b-button v-else @click="$emit('enlarge-text')" variant="warning">Siguiente noticia</b-button>
+                    </p>
+                   
 
                     Fuente: <a :href="items[backcount].solution.link" target="_blank" v-if="items[backcount].solution.fuente">{{items[backcount].solution.fuente}}</a>
                 </div>

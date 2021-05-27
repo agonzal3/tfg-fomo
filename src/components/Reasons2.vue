@@ -26,7 +26,7 @@
             </transition>
         </div>
         <b-button :disabled="timePassed>timeLimit || counter>items.length-1" variant="success" @click="syntomFoMO(false)" class="bigbutton" style="align-items: flex-end">NO Sintoma de la FoMO</b-button>
-        <b-modal size="lg" ref="my-modal" hide-header centered>
+        <b-modal size="lg" ref="my-modal" hide-header centered :no-close-on-backdrop="true">
             <h2 class="text-center">Resultado</h2>
             <br> 
             <div class="d-block">
@@ -60,7 +60,7 @@
                         </b-col>
                     </b-row>
                 </b-container>
-                <p class="text-center">Muy bien o no. Aqui tenomos los ejempols que han salido y algunos que no han salido y su clasificación. <br> 
+                <p class="text-center">Aqui tenomos los ejempols que han salido y algunos que no han salido y su clasificación. <br> 
                 Siguendo la linea de antes, los possibles sintomas son consequencias de la no satisfación de las 3 necessidades psicologicas anteriores: Comeptencia, Autonomia y Pertenencia.</p>
             </div>
             <template #modal-footer>
@@ -68,8 +68,8 @@
                     <b-button
                         variant="primary"
                         class="float-right"
-                        @click="show=false">
-                        Exit
+                        @click="$emit('enlarge-text')">
+                        Siguiente
                     </b-button>
                 </div>
             </template>
@@ -79,9 +79,9 @@
 
 <script>
 const FULL_DASH_ARRAY = 125;
-const WARNING_THRESHOLD = 10;
-const ALERT_THRESHOLD = 5;
-const TIME_DEFINED = 60;
+const WARNING_THRESHOLD = 30;
+const ALERT_THRESHOLD = 15;
+const TIME_DEFINED = 59;
 
 export default {
     name:'Reason2',

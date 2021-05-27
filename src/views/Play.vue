@@ -33,6 +33,7 @@
         <Textinteract v-if="pasos === 9" v-bind:text="text5" v-bind:responcebutton="responcebutton5" v-on:enlarge-text="onEnlargeText"/>
         <Textinteract v-if="pasos === 10" v-bind:text="text6" v-bind:responcebutton="responcebutton6" v-on:enlarge-text="onEnlargeText"/>
         <Reason2 v-if="pasos === 11" v-on:enlarge-text="onEnlargeText"/>
+        <Consequence v-if="pasos === 12" v-on:enlarge-text="onEnlargeText"/>
         
 
       </transition>
@@ -80,8 +81,8 @@ export default {
           responcebutton4:[{button1:'Vamos a ver-lo'}],
           text5:['¿Ahora que sabemos que se necesita para estar satisfecho también podemos deducir cuando no lo estamos, verdad?','Si, no estaremos satisfechos, siempre y cuando no se cumplan, no seas Competente, Autónomo y tengas el sentimiento de pertenencia.'],
           responcebutton5:[{button1:'No estoy seguro de seguir-te', button2:'Claro que si'}, {button1:'Ahora si, que lo entiendo'}],
-          text6:['Sabiendo esto vamos a ver si a partir de situaciones reales, puedes deducir si son causas o signos de FoMO. \n ¿En los próximos 30 segundos tendrás que decidir si las siguientes afirmaciones son posibles simptomas de la FoMO o no?'],
-          responcebutton6:[{button1:'Next'}],
+          text6:['Sabiendo esto vamos a ver si a partir de situaciones reales, puedes deducir si son causas o signos de FoMO. \n En los próximos 60 segundos tendrás que decidir si las siguientes afirmaciones/situaciones pueden ser posibles simptomas de la FoMO o no!'],
+          responcebutton6:[{button1:"Let's go!"}],
           text7:[''],
           responcebutton7:[{button1:''}],
           startTypers: false,

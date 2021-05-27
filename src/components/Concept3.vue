@@ -1,8 +1,8 @@
 <template>
     <div id="position">
-      <h2>Para saber en que punto estamos te reto a acertar la siguiente pregnta, en menos de tres intentos.</h2>
+      <h2>¿Cuál es la media de uso del móvil entre los jóvenes (de 18 a 24 años) de España?</h2>
 
-      <p>¿Cuál es la media de uso del móvil entre los jóvenes (de 18 a 24 años) de España?</p>
+      <p><b-badge :variant="counter>1 ? 'warning' : 'danger'">Tienes {{counter}} intentos</b-badge></p>
 
       <!-- <input append="h"> -->
       <b-container fluid>
@@ -42,7 +42,7 @@
             <img style="width:450px" :src="image">
             <h4 :class="classe">{{responce}}</h4>
             <p>Segun un el informe <i>"Smartphones: el impacto de la adicciónal móvil en los accidentes de tráfico"</i> que se realizo en septiembre de 2019, los jovenes entre 18 y 24 utilizan el móvil <b-badge variant="danger">6:48h al dia</b-badge>.</p>
-            <b-button @click="$emit('enlarge-text')">Next thing</b-button>
+            <b-button @click="$emit('enlarge-text')">Passar prueva</b-button>
           </div>
         </b-modal>
       </div>
@@ -56,7 +56,7 @@
       </div>
 
       <p></p>
-      <b-button @click="calculatetime" :disabled="counter === 0 || classe === 'correct'">{{counter}} intentos</b-button>
+      <b-button @click="calculatetime" :disabled="counter === 0 || classe === 'correct'">Confirmar</b-button>
       <!-- <p :class="classe">{{responce}}</p> -->
     </div>
 </template>

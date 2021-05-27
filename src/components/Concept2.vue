@@ -13,7 +13,6 @@
         <br>
         <div v-if="respuesta === 'correct'">
           <p>Muy bien!!</p>
-          <b-button @click="$emit('enlarge-text')">Siguiente prueba</b-button>
         </div>
         <div v-if="respuesta === 'wrong'"><p>Intentalo de nuevo, ahora quedan {{intentos}} de 4 opciones.</p></div>
   </div>
@@ -44,6 +43,7 @@ export default {
         button.disabled = true;
       } else{
         document.getElementById('button'+number).style.background = '#66ddaa';
+        setTimeout(() => this.$emit('enlarge-text'), 1000);
       }
     }
   },

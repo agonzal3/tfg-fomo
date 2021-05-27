@@ -47,6 +47,7 @@ import fomo_like from "../assets/Concept1/fomoLike.jpg";
 import fomo_parents from "../assets/Concept1/fomoParents.jpg";
 import fomo_wakeup from "../assets/Concept1/fomoWakeup.jpg";
 import giftwin from "../assets/giphy.gif";
+import giftlose from "../assets/giphy2.gif";
 
 
 export default {
@@ -76,14 +77,6 @@ export default {
         }
     },
     methods:{
-        getimage(){
-            return giftwin
-
-            //console.log(document.getElementById('mypic').setAttribute('src', xx))
-            //console.log(xx)
-
-            //return this.lista[this.counter].imagen;
-        },
         correct(){
             this.puntuation += 10;
             this.counter++;
@@ -116,7 +109,11 @@ export default {
     },
     computed:{
         returnimage(){
-            return giftwin;
+            if(this.resoult < 2){
+                return giftwin
+            } else {
+                return giftlose
+            }
         },
         // margin_top(){
         //     let height = this.$refs.infoBox.clientHeight;

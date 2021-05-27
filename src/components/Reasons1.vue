@@ -1,5 +1,6 @@
 <template>
     <div id="position">
+        <h4>Arrastra los conecptos con sus definiciones pertinentes</h4>
         <div id="origin"
             class="flexbox"
             @dragover.prevent
@@ -13,17 +14,24 @@
                 @dragover.stop>{{item.title}}</div>
         </div>
         
-        <div class='dragTotal'>
-            <div v-for='item in items' :key='item.id' >
-                <div class='drop-zone'
-                    :id="item.title"
-                    @dragover.prevent
-                    @drop.prevent="drop"></div>
-                {{item.def}}
+        <div>
+            <div v-for='item in items' :key='item.id'>
+                <div class='dragTotal' style="display: flex">
+                    <div class='drop-zone'
+                        :id="item.title"
+                        @dragover.prevent
+                        @drop.prevent="drop">
+                    </div>
+                    {{item.def}}
+                </div>
             </div>
         </div>
         
-        <b-button @click="reset">Validate</b-button>
+        <b-button @click="reset">Confirmar</b-button>
+
+        <p v-if="responce === 'notcomplete'" style="color:red">Tienes que colocarlas todas!</p>
+        <p v-if="responce === 'tryagain'" style="color:orange">Intentalo de nuevo!</p>
+        <p v-if="responce === 'correct'" style="color:green">Well done!</p>
     </div>
 </template>
 
@@ -33,6 +41,7 @@ export default {
     data(){
         return{
             intro: 'Las redes sociales son muy populares entre los jóvenes, porque nosotros los humanos somos animales …',
+            responce: '',
             items:[
                 {id:0, title: 'Competencia', def:'Capacidad de participar y aportar en el mundo.', list:1},
                 {id:1, title: 'Autonomía', def:'Ser capaz de valersé por uno mismo, tener independencia personal.', list:1},
@@ -40,8 +49,8 @@ export default {
             ]
         }
     },
-    computed: {
-        
+    mounted(){
+        this.items.sort(() => Math.random() - 0.5);
     },
     methods:{
         drop(event){
@@ -59,26 +68,30 @@ export default {
 
             event.dataTransfer.setData('card_id',target.id);
 
-            setTimeout(()=>{
-                
-            });
         },
         reset(){
             const bar = document.getElementById('origin');
+            this.responce = 'nothing';
             if(bar.childNodes.length === 0){
                 this.items.forEach((key,index)=>{
                     const title = document.getElementById(key.title);
-                    console.log(title.childNodes[0]);
                     if(title.id === title.textContent){
-                        title.style.backgroundColor = 'green';
-                        title.childNodes[0].style.backgroundColor = 'green';
+                        title.style.backgroundColor = '#44C850';
+                        title.childNodes[0].style.backgroundColor = '#44C850';
                         title.childNodes[0].draggable = false;
                     }else{
                         title.style.backgroundColor = '#eee';
                         title.childNodes[0].style.backgroundColor = '#eee';
                         bar.appendChild(title.childNodes[0]);
+                        this.responce = 'tryagain';
                     }
                 });
+                if(this.responce === 'nothing') {
+                    this.responce = 'correct';
+                    setTimeout(() => this.$emit('enlarge-text'), 1000);
+                }
+            } else{
+                this.responce = 'notcomplete';
             }
            
         }
@@ -91,8 +104,10 @@ export default {
 <style scoped>
 .drop-zone {
     background-color: #eee;
-    margin-bottom: 10px;
-    min-height: 20px;
+    margin-right: 10px;
+    min-height: inherit;
+    min-width: 200px;
+    color: black;
   }
 
   .drag-el {
@@ -102,15 +117,21 @@ export default {
     width: 33%;
   }
   .dragTotal {
+      border-radius: 10px;
       background-color:dimgray;
-      padding: 5px;
+      padding: 15px;
+      margin-top: 15px;
+      color: white;
   }
 
   .flexbox{
+      border-radius: 10px;
       display: flex;
       margin:10px;
-      background-color: firebrick;
+      background-color: #FFA525;
       height: 60px;
-      
+  }
+  button{
+      margin-top: 30px;
   }
 </style>
