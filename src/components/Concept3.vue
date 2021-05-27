@@ -36,17 +36,24 @@
           </b-col>
         </b-row>
       </b-container>
-
-      <b-modal ref="my-modal" hide-footer centered>
-        <!-- <template #modal-title>
-          <h3 :class="classe">{{responce}}</h3>
-        </template> -->
-        <div class="d-block text-center">
-          <img style="width:450px" :src="image">
-          <h4 :class="classe">{{responce}}</h4>
-          <p v-if="counter === 0">Segun un el informe <i>"Smartphones: el impacto de la adicciónal móvil en los accidentes de tráfico"</i> que se realizo en septiembre de 2019, los jovenes entre 18 y 24 utilizan el móvil <b-badge variant="danger">6:48h al dia</b-badge>.</p>
-        </div>
-      </b-modal>
+      <div v-if="counter === 0 || (hours === realhoures && minutes === realminutes)">
+        <b-modal ref="my-modal" hide-footer hide-header :no-close-on-backdrop="true" centered>
+          <div class="d-block text-center">
+            <img style="width:450px" :src="image">
+            <h4 :class="classe">{{responce}}</h4>
+            <p>Segun un el informe <i>"Smartphones: el impacto de la adicciónal móvil en los accidentes de tráfico"</i> que se realizo en septiembre de 2019, los jovenes entre 18 y 24 utilizan el móvil <b-badge variant="danger">6:48h al dia</b-badge>.</p>
+            <b-button @click="$emit('enlarge-text')">Next thing</b-button>
+          </div>
+        </b-modal>
+      </div>
+      <div v-else>
+        <b-modal ref="my-modal" hide-footer centered>
+          <div class="d-block text-center">
+            <img style="width:450px" :src="image">
+            <h4 :class="classe">{{responce}}</h4>
+          </div>
+        </b-modal>
+      </div>
 
       <p></p>
       <b-button @click="calculatetime" :disabled="counter === 0 || classe === 'correct'">{{counter}} intentos</b-button>
