@@ -28,12 +28,16 @@
         <Textinteract v-if="pasos === 4" v-bind:text="text2" v-bind:responcebutton="responcebutton2" v-on:enlarge-text="onEnlargeText"/>
         <Textinteract v-if="pasos === 5" v-bind:text="text3" v-bind:responcebutton="responcebutton3" v-on:enlarge-text="onEnlargeText"/>
         <Concept3 v-if="pasos === 6" v-on:enlarge-text="onEnlargeText"/>
-        <Textinteract v-if="pasos === 7" v-bind:text="text4" v-bind:responcebutton="responcebutton4" v-on:enlarge-text="onEnlargeText"/>
-        <Reason1 v-if="pasos === 8" v-on:enlarge-text="onEnlargeText"/>
-        <Textinteract v-if="pasos === 9" v-bind:text="text5" v-bind:responcebutton="responcebutton5" v-on:enlarge-text="onEnlargeText"/>
-        <Textinteract v-if="pasos === 10" v-bind:text="text6" v-bind:responcebutton="responcebutton6" v-on:enlarge-text="onEnlargeText"/>
-        <Reason2 v-if="pasos === 11" v-on:enlarge-text="onEnlargeText"/>
-        <Consequence v-if="pasos === 12" v-on:enlarge-text="onEnlargeText"/>
+        <Reasontext v-if="pasos === 7" v-on:enlarge-text="onEnlargeText"/>
+        <Textinteract v-if="pasos === 8" v-bind:text="text4" v-bind:responcebutton="responcebutton4" v-on:enlarge-text="onEnlargeText"/>
+        <Reason1 v-if="pasos === 9" v-on:enlarge-text="onEnlargeText"/>
+        <Textinteract v-if="pasos === 10" v-bind:text="text5" v-bind:responcebutton="responcebutton5" v-on:enlarge-text="onEnlargeText"/>
+        <Textinteract v-if="pasos === 11" v-bind:text="text6" v-bind:responcebutton="responcebutton6" v-on:enlarge-text="onEnlargeText"/>
+        <Reason2 v-if="pasos === 12" v-on:enlarge-text="onEnlargeText"/>
+        <Consequence v-if="pasos === 13" v-on:enlarge-text="onEnlargeText"/>
+        <Textinteract v-if="pasos === 14" v-bind:text="text7" v-bind:responcebutton="responcebutton7" v-on:enlarge-text="onEnlargeText"/>
+        <!-- <Reasontext v-if="pasos === 0" v-on:enlarge-text="onEnlargeText"/> -->
+
         
 
       </transition>
@@ -57,6 +61,7 @@ import Concept3 from "../components/Concept3";
 import Reason1 from "../components/Reasons1";
 import Reason2 from "../components/Reasons2";
 import Consequence from "../components/Consequences1";
+import Reasontext from "../components/ReasonsText";
 
 
 export default {
@@ -70,21 +75,22 @@ export default {
           text: ['Hola, mi nombre es Alex y vengo del futuro. En el 2043 la sociedad se ha vuelto totalmente dependiente del móvil, antisocial, infeliz y no parece que la cosa vaya a mejorar. \n Estamos a un paso del declive de la civilización. Y vosotros, los adolescentes del pasado y futuros trabajadores, emprendedores, empresarios, investigadores y adultos sois los únicos que podéis cambiar el destino de la humanidad. Para que no cometáis los mismos errores que nosotros y podamos tener una vida llena de aventuras, emociones, amigos y de satisfacción. \n Necesitamos tu ayuda para salvar la humanidad y aquí es donde empieza el cambio.',
                 '¡Te necesitamos para salvar-nos! ¿Ahora o nunca?'],
           responcebutton:[{button1:"Yo, estáis seguros de que no queréis a otra persona?", button2:"Vamos a ello"},
-                          {button1:"Ahora!"}],
+                          {button2:"Ahora!"}],
           text1:['Des de hace 10 años, se está investigando y escribiendo acerca de la FoMO (Fear of Missing Out). Que hoy en día, en 2021 aún no se sabe si es un síntoma, una adición tecnológica o solo un efecto secundario de la vida tecnológica.'],
-          responcebutton1:[{button1:"Ponme en contexto."}],
+          responcebutton1:[{button2:"Ponme en contexto."}],
           text2:['Y el móvil y las redes sociales lo que hacen cada vez es potenciar más este sentimiento.'],
-          responcebutton2:[{button1:'Pero que tiene que ver esto con salvar la humanidad'}],
+          responcebutton2:[{button2:'Pero que tiene que ver esto con salvar la humanidad'}],
           text3:['El mundo se ha vuelto un lugar más oscuro y en parte viene a raíz de estas situaciones, que parecen una tontería, pero no lo son porque es el día a día de muchos jóvenes. Y esto problema que lo vamos a ir desengrasando paso a paso. \n Para saber en que punto estamos te reto a acertar la siguiente pregnta, en menos de tres intentos'],
-          responcebutton3:[{button1:'Acepto el reto'}],
-          text4:['Según grandes investigaciones, para estar satisfecho se tienen que cumplir 3 necesidades psicológicas: \n Competencia, Autonomía y Pertenencia \n ¿Sabrías asociar el significado de cada una de ellas?'],
-          responcebutton4:[{button1:'Vamos a ver-lo'}],
+          responcebutton3:[{button2:'Acepto el reto'}],
+          text4:['Entramos en el juego de las redes sociales para satisfacer nuestras necesidades. ¿Pero realmente se satisfacen?','Según grandes investigaciones, para estar satisfecho se tienen que cumplir 3 necesidades psicológicas: \n Competencia, Autonomía y Pertenencia \n ¿Sabrías asociar el significado de cada una de ellas?'],
+          responcebutton4:[{button1:'Vamos a descubrir-lo'},{button2:'Vamos a ver-lo'}],
           text5:['¿Ahora que sabemos que se necesita para estar satisfecho también podemos deducir cuando no lo estamos, verdad?','Si, no estaremos satisfechos, siempre y cuando no se cumplan, no seas Competente, Autónomo y tengas el sentimiento de pertenencia.'],
           responcebutton5:[{button1:'No estoy seguro de seguir-te', button2:'Claro que si'}, {button1:'Ahora si, que lo entiendo'}],
           text6:['Sabiendo esto vamos a ver si a partir de situaciones reales, puedes deducir si son causas o signos de FoMO. \n En los próximos 60 segundos tendrás que decidir si las siguientes afirmaciones/situaciones pueden ser posibles simptomas de la FoMO o no!'],
-          responcebutton6:[{button1:"Let's go!"}],
-          text7:[''],
-          responcebutton7:[{button1:''}],
+          responcebutton6:[{button2:"Let's go!"}],
+          text7:['Ya tenemos la idea, las causas y ahora nos falta la última parte y la más importante, las consecuencias. A continuación saldrán noticias relacionadas con la FoMO y tendrás que escoger si son falsas o verdaderas en función de tu criterio. Después de cada apartado saldrá la respuesta. ¿Estás listo?',
+          'A la que hagas el primero lo vas a entender en seguida.'],
+          responcebutton7:[{button1:'No acabo de entender-lo.',button2:'Por su puesto'},{button2:'De acuerdo vamos alla!'}],
           startTypers: false,
           actualtext: ''
         }
@@ -96,7 +102,8 @@ export default {
         Reason1,
         Reason2,
         Consequence,
-        Textinteract
+        Textinteract,
+        Reasontext
     },
     methods:{
         onEnlargeText() {

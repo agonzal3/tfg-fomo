@@ -19,14 +19,17 @@
         </div>
         <transition name="slide-fade">
           <div style="margin-top:50px;" v-if="show">
-              <div v-if="responcebutton[count].button2">
+              <div v-if="responcebutton[count].button2 && responcebutton[count].button1">
                 <b-row>
                   <b-col sm="6"><b-button @click="onClick">{{responcebutton[count].button1}}</b-button></b-col>
                   <b-col sm="6"><b-button @click="resetClick">{{responcebutton[count].button2}}</b-button></b-col>
                 </b-row>
               </div>
+              <div v-else-if="responcebutton[count].button2">
+                <b-button @click="resetClick">{{responcebutton[count].button2}}</b-button>
+              </div>
               <div v-else>
-                <b-button @click="resetClick">{{responcebutton[count].button1}}</b-button>
+                <b-button @click="onClick">{{responcebutton[count].button1}}</b-button>
               </div>
           </div>
         </transition>
