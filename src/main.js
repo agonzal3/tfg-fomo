@@ -5,8 +5,10 @@ import router from './router'
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
 import VueNumericInput from 'vue-numeric-input';
 import VueTyperPlugin from 'vue-typer'
+import VueConfetti from 'vue-confetti'
+ 
 
-// import confetti from 'canvas-confetti';
+import confetti from 'canvas-confetti';
 
  
 
@@ -18,6 +20,7 @@ Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
 Vue.use(VueNumericInput)
 Vue.use(VueTyperPlugin)
+Vue.use(VueConfetti)
 
 
 Vue.config.productionTip = false
