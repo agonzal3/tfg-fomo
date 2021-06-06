@@ -2,7 +2,7 @@
   <div class="play">
     <!-- <b-container fluid class="bv-example-row">
       <b-row> -->
-    <div id="controles" class="controls">
+    <div id="controles">
       <h2 id="subtitle">Niveles</h2>
       <div class="square">
           <div class="subsquare">
@@ -45,6 +45,8 @@
         <Textinteract v-if="pasos === 15" v-bind:text="text7" v-bind:responcebutton="responcebutton7" v-on:enlarge-text="onEnlargeText"/>
         <Consequence v-if="pasos === 16" v-on:enlarge-text="onEnlargeText"/>
         <Compensation v-if="pasos === 17" :number=2 @enlarge-text="onEnlargeText"/>
+        <Textinteract v-if="pasos === 18" v-bind:text="text8" v-bind:responcebutton="responcebutton8" v-on:enlarge-text="onEnlargeText"/>
+        
         <!-- <Reasontext v-if="pasos === 0" v-on:enlarge-text="onEnlargeText"/> -->
         <!-- <b-button @click="start()">Start</b-button> -->
 
@@ -84,9 +86,8 @@ export default {
           view:'Concept1',
           show:false,
           count: 0,
-          // text: ['Hola, mi nombre es Alex y vengo del futuro. En el 2043 la sociedad se ha vuelto totalmente dependiente del móvil, antisocial, infeliz y no parece que la cosa vaya a mejorar. \n Estamos a un paso del declive de la civilización. Y vosotros, los adolescentes del pasado y futuros trabajadores, emprendedores, empresarios, investigadores y adultos sois los únicos que podéis cambiar el destino de la humanidad. Para que no cometáis los mismos errores que nosotros y podamos tener una vida llena de aventuras, emociones, amigos y de satisfacción. \n Necesitamos tu ayuda para salvar la humanidad y aquí es donde empieza el cambio.',
-          //       '¡Te necesitamos para salvar-nos! ¿Ahora o nunca?'],
-          text:['helo','bye'],
+          text: ['Hola, mi nombre es Alex y vengo del futuro. En el 2043 la sociedad se ha vuelto totalmente dependiente del móvil, antisocial, infeliz y no parece que la cosa vaya a mejorar. \n Estamos a un paso del declive de la civilización. Y vosotros, los adolescentes del pasado y futuros trabajadores, emprendedores, empresarios, investigadores y adultos sois los únicos que podéis cambiar el destino de la humanidad. Para que no cometáis los mismos errores que nosotros y podamos tener una vida llena de aventuras, emociones, amigos y de satisfacción. \n Necesitamos tu ayuda para salvar la humanidad y aquí es donde empieza el cambio.',
+                '¡Te necesitamos para salvar-nos! ¿Ahora o nunca?'],
           responcebutton:[{button1:"Yo, estáis seguros de que no queréis a otra persona?", button2:"Vamos a ello"},
                           {button2:"Ahora!"}],
           text1:['Des de hace 10 años, se está investigando y escribiendo acerca de la FoMO (Fear of Missing Out). Que hoy en día, en 2021 aún no se sabe si es un síntoma, una adición tecnológica o solo un efecto secundario de la vida tecnológica.'],
@@ -98,14 +99,16 @@ export default {
           text4:['Entramos en el juego de las redes sociales para satisfacer nuestras necesidades. ¿Pero realmente se satisfacen?','Según grandes investigaciones, para estar satisfecho se tienen que cumplir 3 necesidades psicológicas: \n Competencia, Autonomía y Pertenencia \n ¿Sabrías asociar el significado de cada una de ellas?'],
           responcebutton4:[{button1:'Vamos a descubrir-lo'},{button2:'Vamos a ver-lo'}],
           text5:['¿Ahora que sabemos que se necesita para estar satisfecho también podemos deducir cuando no lo estamos, verdad?','Si, no estaremos satisfechos, siempre y cuando no se cumplan, no seas Competente, Autónomo y tengas el sentimiento de pertenencia.'],
-          responcebutton5:[{button1:'No estoy seguro de seguir-te', button2:'Claro que si'}, {button1:'Ahora si, que lo entiendo'}],
+          responcebutton5:[{button1:'No estoy seguro de seguir-te', button2:'Claro que si'}, {button2:'Ahora si, que lo entiendo'}],
           text6:['Sabiendo esto vamos a ver si a partir de situaciones reales, puedes deducir si son causas o signos de FoMO. \n En los próximos 60 segundos tendrás que decidir si las siguientes afirmaciones/situaciones pueden ser posibles simptomas de la FoMO o no!'],
           responcebutton6:[{button2:"Let's go!"}],
-          text7:['Ya tienes la idea, las causas y ahora nos falta la última parte y la más importante, las consecuencias. A continuación saldrán noticias relacionadas con la FoMO y tendrás que escoger si son falsas o verdaderas en función de tu criterio. Después de cada apartado saldrá la respuesta. ¿Estás listo?',
+          text7:['Ya tienes la idea y las causas. Ahora nos falta la última parte y la más importante, las consecuencias. A continuación saldrán noticias relacionadas con la FoMO y tendrás que escoger si son falsas o verdaderas en función de tu criterio. Después de cada apartado saldrá la respuesta. ¿Estás listo?',
           'A la que hagas el primero lo vas a entender en seguida.'],
           responcebutton7:[{button1:'No acabo de entender-lo.',button2:'Por su puesto'},{button2:'De acuerdo vamos alla!'}],
-          startTypers: false,
-          actualtext: ''
+          text8:['Enhorabuena! \n Has descubierto uno de los problemas que ha desolado a mi sociedad y aunque no sea el unico por algún lado hay que empezar.',
+          'Ahora sabemos que es, como se origina y cuales són sus consequencias. Pero para parar la FoMO y de este modo hacer que el mundo sea un lugar mejor. Què necesitamos?',
+          'Quizas un poco exajerado no crees, no seria mehor encontrar la manera de evitar o reducir los niveles de FoMO?'],
+          responcebutton8:[{button1:'Next'}, {button1:"Eliminar la Tecnologia", button2:"Encontrar la manera de como evitar o reducir la FoMO."}, {button2:"Supongo que si."}]
         }
     },
     components: {
@@ -166,7 +169,7 @@ export default {
 </script>
 
 <style scoped>
-.controls{
+#controles{
   background-color: #2c3e50;
   /* position: absolute; */
   float: left;

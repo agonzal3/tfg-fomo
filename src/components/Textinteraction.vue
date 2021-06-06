@@ -53,9 +53,13 @@ export default {
     },
     methods:{
       resetClick(){
-        this.count = 0;
-        this.show = false;
-        this.$emit('enlarge-text');
+        if(this.responcebutton.length === 3){
+          this.$router.push('/solution');
+        } else{
+          this.count = 0;
+          this.show = false;
+          this.$emit('enlarge-text');
+        }
       },
       onClick(){
         this.show = !this.show;

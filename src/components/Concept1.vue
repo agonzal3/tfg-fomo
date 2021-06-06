@@ -33,7 +33,7 @@
                 <!-- <iframe src="https://giphy.com/embed/ar4x1w44umngk" width="100%" height="100%" frameBorder="0" class="giphy-embed" allowFullScreen></iframe> -->
                 <img :src="returnimage" alt="">
                 <p>Las que estavan a la izquiera eran las respuestas que presentavan signos de FoMO.</p>
-                <b-button @click="$emit('enlarge-text')">Next</b-button>
+                <b-button @click="$emit('enlarge-text')">Siguiente</b-button>
             </div>
         </transition>
         <!-- </div> -->
@@ -72,7 +72,7 @@ export default {
             resoult:0,
             respuestas:[
                 {text:'Es de lo más comun entre los adolesecentes y vamos a ver si podemos canviar-lo!'},
-                {text:'Este resultado es para estar contento!'},
+                {text:'Este resultado es para celebrarlo!'},
             ]
         }
     },
@@ -171,5 +171,6 @@ iframe {
 }
 img {
     max-width: 300px;
+    margin: 20px;
 }
 </style>

@@ -21,10 +21,10 @@ const routes = [
     }
   },
   {
-    path: '/concept/:id',
-    name: 'Concept',
+    path: '/solution',
+    name: 'Solution',
     component: function () {
-      return import(/* webpackChunkName: "about" */ '../views/Concept.vue')
+      return import(/* webpackChunkName: "about" */ '../views/Solution.vue')
     }
   }
 ]
