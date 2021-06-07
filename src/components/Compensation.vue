@@ -68,7 +68,12 @@ export default {
                 document.getElementById("controles").style.display = "block";
                 let contenido = document.getElementById("contenido").style;
                 contenido.background = "#FAFAFA";
-                contenido.width = "calc(100% - 300px)";
+                if(this.$mq === 'tablet'){
+                    contenido.height = "calc(100vh - 150px)";
+                }
+                if(this.$mq === 'laptop'){
+                    contenido.width = "calc(100% - 300px)";
+                }
             },1000)
             setTimeout(() => this.$emit('enlarge-text'),1100)
         },
@@ -77,6 +82,7 @@ export default {
             let contenido = document.getElementById("contenido").style;
             contenido.background = "#6699ff";
             contenido.width = "100%";
+            if(this.$mq === 'tablet'){contenido.height = '100vh';}
         }
     },
     mounted(){
@@ -93,6 +99,11 @@ export default {
     border: 3px solid white;
     padding: 10px;
     height: 450px;
+    width: 600px;
+    max-width: 90%;
+    text-align: center;
+    margin: auto;
+    margin-top: calc(50vh - 225px);
 }
 
 img{

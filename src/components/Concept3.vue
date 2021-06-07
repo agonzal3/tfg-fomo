@@ -1,5 +1,5 @@
 <template>
-    <div id="position">
+    <div id="position" :class="$mq">
       <h2>¿Cuál es la media de uso del móvil entre los jóvenes (de 18 a 24 años) de España?</h2>
 
       <p><b-badge :variant="counter>1 ? 'warning' : 'danger'">Tienes {{counter}} intentos</b-badge></p>
@@ -7,20 +7,20 @@
       <!-- <input append="h"> -->
       <b-container fluid>
         <b-row>
-          <b-col md="6">
+          <b-col>
             <b-input-group  size="lg" append="h" style="justify-content: center">
                     <vue-numeric-input
                       id="style1"
                       :min="0" 
                       :max="24" 
                       :value="hours" 
-                      size="130px"
+                      size="100px"
                       align="center"
                       controls-type="updown"
                       v-model="hours"></vue-numeric-input>
             </b-input-group>
           </b-col>
-          <b-col md="6">
+          <b-col>
             <b-input-group  size="lg" append="min" style="justify-content: center">
               <vue-numeric-input
                       id="style2"
@@ -28,7 +28,7 @@
                       :max="50" 
                       :value="minutes" 
                       :step="10"
-                      size="130px"
+                      size="100px"
                       align="center"
                       controls-type="updown"
                       v-model="minutes"></vue-numeric-input>
@@ -37,9 +37,9 @@
         </b-row>
       </b-container>
       <div v-if="counter === 0 || (hours === realhoures && minutes === realminutes)">
-        <b-modal ref="my-modal" hide-footer hide-header :no-close-on-backdrop="true" centered>
+        <b-modal size="lg" ref="my-modal" hide-footer hide-header :no-close-on-backdrop="true" centered>
           <div class="d-block text-center">
-            <img style="width:450px" :src="image">
+            <img style="width:450px; max-width:100%;" :src="image">
             <h4 :class="classe">{{responce}}</h4>
             <p>Segun un el informe <i>"Smartphones: el impacto de la adicciónal móvil en los accidentes de tráfico"</i> que se realizo en septiembre de 2019, los jovenes entre 18 y 24 utilizan el móvil <b-badge variant="danger">6:48h al dia</b-badge>.</p>
             <b-button @click="$emit('enlarge-text')">Passar prueva</b-button>
@@ -49,14 +49,14 @@
       <div v-else>
         <b-modal ref="my-modal" hide-footer centered>
           <div class="d-block text-center">
-            <img style="width:450px" :src="image">
+            <img style="width:450px; max-width:100%;" :src="image">
             <h4 :class="classe">{{responce}}</h4>
           </div>
         </b-modal>
       </div>
 
       <p></p>
-      <b-button @click="calculatetime" :disabled="counter === 0 || classe === 'correct'">Confirmar</b-button>
+      <b-button style="margin-top:30px;" @click="calculatetime" :disabled="counter === 0 || classe === 'correct'">Confirmar</b-button>
       <!-- <p :class="classe">{{responce}}</p> -->
     </div>
 </template>

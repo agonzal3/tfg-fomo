@@ -1,5 +1,5 @@
 <template>
-    <div class="home">
+    <div class="home" :class="$mq">
       <img alt="Vue logo" src="../assets/logo.png">
       <h1>Presentación <br/> <span style="color:blue;">Presentation</span></h1>
       <h3>Quieres saber como puedes salvar el futuro?  <span style="color:blue;"> Do you want to know how you can save the future?</span></h3>
@@ -33,6 +33,14 @@
   width: 40%;
   /* height: 75%; */
   text-align: center;
+}
+.home.tablet {
+  width: 80%;
+
+}
+.home.laptop {
+  width: 40%;
+
 }
 
 .home h1 {

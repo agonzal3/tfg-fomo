@@ -1,6 +1,6 @@
 <template>
-  <div id="position" style="width: 80%; font-size: 20px;">
-    <div style="margin: auto; color: white; max-width: 600px;" ref=20>
+  <div id="position" :class="$mq">
+    <div class="text" :class="$mq" ref=20>
         <vue-typer
             v-if="items[0].startTypers"
             :text="[formatText(items[0].text)]"
@@ -15,14 +15,14 @@
     <transition name="slide-fade">
         <div style="margin-top:30px;margin-bottom:30px;" v-if="items[0].show">
             <b-row>
-                <b-col sm="6"><b-button id="button00" @click="onClick([0, 0, items[0].buttons[0].res])">{{items[0].buttons[0].name}}</b-button></b-col>
-                <b-col sm="6"><b-button id="button01" @click="onClick([0, 1, items[0].buttons[1].res])">{{items[0].buttons[1].name}}</b-button></b-col>
+                <b-col><b-button id="button00" @click="onClick([0, 0, items[0].buttons[0].res])">{{items[0].buttons[0].name}}</b-button></b-col>
+                <b-col><b-button id="button01" @click="onClick([0, 1, items[0].buttons[1].res])">{{items[0].buttons[1].name}}</b-button></b-col>
             </b-row>
             <!-- <div v-else-if="item.finalbutton"></div> -->
         </div>
     </transition>
 
-    <div style="margin: auto; color: white; max-width: 600px;" ref=20>
+    <div class="text" :class="$mq" ref=20>
         <vue-typer
             v-if="items[1].startTypers"
             :text="[formatText(items[1].text)]"
@@ -37,14 +37,14 @@
     <transition name="slide-fade">
         <div style="margin-top:30px;margin-bottom:30px;" v-if="items[1].show">
             <b-row>
-                <b-col sm="6"><b-button id="button10" @click="onClick([1, 0, items[1].buttons[0].res])">{{items[1].buttons[0].name}}</b-button></b-col>
-                <b-col sm="6"><b-button id="button11" @click="onClick([1, 1, items[1].buttons[1].res])">{{items[1].buttons[1].name}}</b-button></b-col>
+                <b-col><b-button id="button10" @click="onClick([1, 0, items[1].buttons[0].res])">{{items[1].buttons[0].name}}</b-button></b-col>
+                <b-col><b-button id="button11" @click="onClick([1, 1, items[1].buttons[1].res])">{{items[1].buttons[1].name}}</b-button></b-col>
             </b-row>
             <!-- <div v-else-if="item.finalbutton"></div> -->
         </div>
     </transition>
 
-    <div style="margin: auto; color: white; max-width: 600px;" ref=20>
+    <div class="text" :class="$mq" ref=20>
         <vue-typer
             v-if="items[2].startTypers"
             :text="[formatText(items[2].text)]"
@@ -62,7 +62,6 @@
             <!-- <div v-else-if="item.finalbutton"></div> -->
         </div>
     </transition>
-
   </div>
 </template>
 
@@ -89,7 +88,7 @@ export default {
         if(resolution){
           setTimeout(() => {this.items[num+1].startTypers = true;}, 300);
           const num3 = Math.abs(num2-1);
-          setTimeout(() => {document.getElementById('button'+num+num3).remove()}, 200);
+          setTimeout(() => {document.getElementById('button'+num+num3).parentNode.remove()}, 200);
           setTimeout(() => {
             const parentElement = document.getElementById('button'+num+num2).parentElement;
             parentElement.classList.add('col-sm-12');
@@ -109,7 +108,13 @@ export default {
         this.count++;        
       },
       formatText(text) {
-        let maxChars = 60;
+        let maxChars = 0;
+        if(this.$mq === 'laptop') {
+          maxChars = 55;
+        } else if(this.$mq === 'tablet'){
+          maxChars = 50;
+
+        }
         // let words = [];
         // console.log(text.text.split(" "));
         let breaked = "";
@@ -140,8 +145,23 @@ export default {
 
 <style scoped>
 
+.text{
+  margin: auto; 
+  color: white; 
+}
+
+.text.laptop{
+  max-width: 600px;
+  font-size: 20px;
+}
+
+.text.tablet{
+  width: 100%;
+  font-size: 18px;
+}
+
 button {
-  width: 66%;
+  width: 90%;
 }
 
 .slide-fade-enter-active {

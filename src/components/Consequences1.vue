@@ -1,14 +1,23 @@
 <template>
-    <div id="position">
+    <div id="position" :class="$mq">
         <flipper
-            width=100%
-            height="600px"
+            :width="$mq | mq({
+                mobil: '80%',
+                tablet: '75%',
+                laptop: '100%'
+            })"
+            :height="$mq | mq({
+                mobil: 'calc(100vh - 200px)',
+                tablet: 'calc(100vh - 200px)',
+                laptop: '600px'
+            })"
+            
             :flipped="flipped">
             <div class="front" slot="front">
                 <div>
-                    <h2>Breaking news</h2>
-                    <h3>{{items[frontcount].title}}</h3>
-                    <img :src="items[frontcount].imagen">
+                    <h2 class="title" :class="$mq">Breaking news</h2>
+                    <h3 class="subtitle" :class="$mq">{{items[frontcount].title}}</h3>
+                    <img class="imagecard" :class="$mq" :src="items[frontcount].imagen">
 
                     <div>
                         <b-button @click="onClick(false)" style="margin-right:20px" variant="danger">False</b-button>
@@ -20,18 +29,19 @@
         
             <div Class="back" slot="back">
                 <div>
-                    <h2 id="title">{{resolution}}</h2>
-                    <h3>It is {{items[backcount].res}}</h3>
-                    <h4>{{items[backcount].solution.title}}</h4>
-                    <p>{{items[backcount].solution.text}}</p>
+                    <h2 class="title" :class="$mq" id="title">{{resolution}}</h2>
+                    <h3 class="subtitle" :class="$mq">It is {{items[backcount].res}}</h3>
+                    <h4 class="subtitle" :class="$mq">{{items[backcount].solution.title}}</h4>
+                    <p class="textcontent" :class="$mq">{{items[backcount].solution.text}}</p>
 
                     <p>
                         <b-button  v-if="backcount < items.length-1" @click="nextnew" variant="warning">Siguiente noticia</b-button>
                         <b-button v-else @click="$emit('enlarge-text')" variant="warning">Siguiente noticia</b-button>
                     </p>
-                   
-
-                    Fuente: <a :href="items[backcount].solution.link" target="_blank" v-if="items[backcount].solution.fuente">{{items[backcount].solution.fuente}}</a>
+                
+                    <p class="fuente" :class="$mq">
+                        Fuente: <a :href="items[backcount].solution.link" target="_blank" v-if="items[backcount].solution.fuente">{{items[backcount].solution.fuente}}</a>
+                    </p>
                 </div>
             </div>
         </flipper>
@@ -138,8 +148,15 @@ export default {
 
 <style src="vue-flipper/dist/vue-flipper.css" />
 <style scoped>
-img {
+.imagecard.laptop {
     max-width: 350px;
+    max-height: 250px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.imagecard.tablet{
+    max-width: 200px;
     margin-top: 10px;
     margin-bottom: 25px;
 }
@@ -191,5 +208,24 @@ img {
     background-color: teal;
 }
 
+.content.tablet{
+    width: 80%;
+}
+
+.title.tablet{
+    font-size: 20px;
+}
+.subtitle.tablet{
+    font-size: 15px;
+}
+.textcontent.tablet{
+    font-size: 13px;
+}
+.fuente.tablet{
+    font-size: 11px;
+}
+.fuente.laptop{
+    font-size: 15px;
+}
 
 </style>

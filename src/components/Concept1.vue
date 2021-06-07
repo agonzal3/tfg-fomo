@@ -1,29 +1,28 @@
 <template>
-    <div id="position">
+    <div id="position" :class="$mq">
         <!-- <div :style='"margin-top:" + margin_top + "px"'> -->
         <transition name="slide-fade">
             <div v-if="show">
-                <h1>Ha menudo te passado?</h1>
+                <h2>Ha menudo te pasado?</h2>
 
                 <div v-if="counter < lista.length">
                     <p>{{lista[counter].text}}</p>
                 </div>
 
-                <img :src="lista[counter].imagen">
+                <img class="setimages" :class="$mq" :src="lista[counter].imagen">
 
-                <p>{{puntuation}}</p>
                 <b-container class="bv-example-row">
                     <div v-if="counter < lista.length">
                         <b-row align-h="between">
-                            <b-col cols="6"><b-button @click="wrong">{{lista[counter].aswer1}}</b-button></b-col>
+                            <b-col><b-button @click="wrong">{{lista[counter].aswer1}}</b-button></b-col>
                             <!-- <b-col cols="6"><b-button to='/concept/1' variant="outline-primary">{{lista[counter].aswer2}}</b-button></b-col> -->
-                            <b-col cols="6"><b-button @click="correct">{{lista[counter].aswer2}}</b-button></b-col>
+                            <b-col><b-button @click="correct">{{lista[counter].aswer2}}</b-button></b-col>
                         </b-row>
                     </div>
 
                 </b-container>
             </div>
-            <div v-if="show2">
+            <div class="resolution" :class="$mq" v-if="show2">
 
                 <p>De las anteriores situaciones has mostrado signos de FoMO en {{resoult}} de 4.
                     <span v-if="resoult >= 2">{{respuestas[0].text}}</span>
@@ -172,5 +171,17 @@ iframe {
 img {
     max-width: 300px;
     margin: 20px;
+}
+
+.setimages.tablet{
+    max-width:300px;
+    max-height:200px;
+}
+
+.resolution.tablet > p{
+    font-size: 17px;
+}
+.resolution.tablet > img{
+    max-height:250px;
 }
 </style>

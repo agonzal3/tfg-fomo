@@ -1,6 +1,6 @@
 <template>
-    <div id="position" style="width: 80%; font-size: 20px;">
-        <div style="margin: auto; color: white; max-width: 600px;" ref=20>
+    <div id="position" :class="$mq">
+        <div class="text" :class="$mq" ref=20>
           <vue-typer
             v-if="startTypers"
             :text="[formatText(text[count])]"
@@ -18,11 +18,11 @@
           ></vue-typer>
         </div>
         <transition name="slide-fade">
-          <div style="margin-top:50px;" v-if="show">
+          <div style="margin-top:10px;" v-if="show">
               <div v-if="responcebutton[count].button2 && responcebutton[count].button1">
                 <b-row>
-                  <b-col sm="6"><b-button @click="onClick">{{responcebutton[count].button1}}</b-button></b-col>
-                  <b-col sm="6"><b-button @click="resetClick">{{responcebutton[count].button2}}</b-button></b-col>
+                  <b-col><b-button @click="onClick">{{responcebutton[count].button1}}</b-button></b-col>
+                  <b-col><b-button @click="resetClick">{{responcebutton[count].button2}}</b-button></b-col>
                 </b-row>
               </div>
               <div v-else-if="responcebutton[count].button2">
@@ -71,7 +71,14 @@ export default {
         // this.show = !this.show;
       },
       formatText(text) {
-        let maxChars = 60;
+        let maxChars = 0;
+        if(this.$mq === 'laptop') {
+          maxChars = 55;
+        } else if(this.$mq === 'tablet'){
+          maxChars = 50;
+
+        }
+        
         // let words = [];
         // console.log(text.text.split(" "));
         let breaked = "";
@@ -104,8 +111,24 @@ export default {
 
 <style scoped>
 
+.text{
+  margin: auto; 
+  color: white; 
+  
+}
+
+.text.laptop{
+  max-width: 600px;
+  font-size: 20px;
+}
+
+.text.tablet{
+  width: 100%;
+  font-size: 17px;
+}
+
 button {
-  width: 66%;
+  width: 90%;
 }
 
 .slide-fade-enter-active {

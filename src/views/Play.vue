@@ -2,27 +2,27 @@
   <div class="play">
     <!-- <b-container fluid class="bv-example-row">
       <b-row> -->
-    <div id="controles">
-      <h2 id="subtitle">Niveles</h2>
-      <div class="square">
-          <div class="subsquare">
+    <div id="controles" class="controls" :class="$mq">
+      <h2 id="subtitle" :class="$mq">Niveles</h2>
+      <div class="square" :class="$mq">
+          <div class="subsquare" :class="$mq">
             <transition name="component-fade2">
-              <b-img  v-if="pasos > 7" center :src="require('../assets/Steps/book1.png')" alt="Center image"></b-img>
+              <b-img class="subsquare-image" :class="$mq" v-if="pasos > 7" center :src="require('../assets/Steps/book1.png')" alt="Center image"></b-img>
             </transition>
           </div>
-          <div class="subsquare">
+          <div class="subsquare" :class="$mq">
             <transition name="component-fade2">
-              <b-img v-if="pasos > 14" center :src="require('../assets/Steps/detective.png')" alt="Center image"></b-img>
+              <b-img class="subsquare-image" :class="$mq" v-if="pasos > 14" center :src="require('../assets/Steps/detective.png')" alt="Center image"></b-img>
             </transition>
           </div>
-          <div class="subsquare">
+          <div class="subsquare" :class="$mq">
             <transition name="component-fade2">
-              <b-img v-if="pasos > 17" center :src="require('../assets/Steps/danger.png')" alt="Center image"></b-img>
+              <b-img class="subsquare-image" :class="$mq" v-if="pasos > 17" center :src="require('../assets/Steps/danger.png')" alt="Center image"></b-img>
             </transition>
           </div>
       </div>
     </div>
-    <div id="contenido" class="content">
+    <div id="contenido" :class="$mq">
       
       <!-- <Concept1 /> -->
       <!-- <Concept1 v-if="steps === 1" /> -->
@@ -105,7 +105,7 @@ export default {
           text7:['Ya tienes la idea y las causas. Ahora nos falta la última parte y la más importante, las consecuencias. A continuación saldrán noticias relacionadas con la FoMO y tendrás que escoger si son falsas o verdaderas en función de tu criterio. Después de cada apartado saldrá la respuesta. ¿Estás listo?',
           'A la que hagas el primero lo vas a entender en seguida.'],
           responcebutton7:[{button1:'No acabo de entender-lo.',button2:'Por su puesto'},{button2:'De acuerdo vamos alla!'}],
-          text8:['Enhorabuena! \n Has descubierto uno de los problemas que ha desolado a mi sociedad y aunque no sea el unico por algún lado hay que empezar.',
+          text8:['Enhorabuena! \n Has descubierto uno de los problemas que ha desolado a esta sociedad y aunque no sea el unico por algún lado hay que empezar.',
           'Ahora sabemos que es, como se origina y cuales són sus consequencias. Pero para parar la FoMO y de este modo hacer que el mundo sea un lugar mejor. Què necesitamos?',
           'Quizas un poco exajerado no crees, no seria mehor encontrar la manera de evitar o reducir los niveles de FoMO?'],
           responcebutton8:[{button1:'Next'}, {button1:"Eliminar la Tecnologia", button2:"Encontrar la manera de como evitar o reducir la FoMO."}, {button2:"Supongo que si."}]
@@ -128,7 +128,7 @@ export default {
           // this.view = this.xx[this.steps].name;
         },
         start() {
-          document.getElementById("controles").hidden;
+          document.getElementById("").hidden;
             this.$confetti.start({
                 particles: [
                     {
@@ -169,23 +169,86 @@ export default {
 </script>
 
 <style scoped>
-#controles{
+
+.controls{
   background-color: #2c3e50;
+}
+.controls.laptop{
+  
   /* position: absolute; */
   float: left;
   height:100vh;
   width: 300px;
   min-height: 700px;
-
 }
-.content{
+.controls.tablet, .controls.mobil {
+  width: 100%;
+  height: 150px;
+}
+.square{
+  margin: auto;
+}
+.square.laptop {
+  background-color: #FAFAFA;
+  margin-top: 20px;
+  width: 200px;
+  height: 80%;
+}
+.square.tablet, .square.mobil {
+  width: 80%;
+  min-width: 300px;
+  height: 100px;
+  display: flex;
+}
+.subsquare {
+  border: 3px solid #555;
+  margin: auto;
+  
+}
+
+.subsquare.laptop{
+  height: 33.4%;
+  width: inherit;
+}
+.subsquare.tablet, .subsquare.mobil{
+  background-color: #FAFAFA;
+  height: 100%;
+  width: 100px;
+}
+.subsquare-image {
+  position: relative;
+  /* Center verticaly */
+  margin: 0;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.subsquare-image.laptop{
+  width: 130px;
+}
+
+.subsquare-image.tablet, .subsquare-image.mobil {
+  width: 80px;
+}
+
+
+
+#contenido{
   background-color:#FAFAFA;
   float: left;
-  width: calc(100% - 300px);
   padding: 10px;
-  height:100vh;
-  min-height: 700px;
+}
 
+#contenido.laptop{
+  width: calc(100% - 300px);
+  min-height: 700px;
+  height:100vh;
+}
+
+#contenido.tablet, #contenido.mobil {
+  width: 100%;
+  height: calc(100vh - 150px);
 }
 
 .component-fade-enter-active, .component-fade-leave-active {
@@ -205,34 +268,18 @@ export default {
   opacity: 0;
 }
 
-#subtitle{
+#subtitle.laptop{
   text-align: center;
 
   margin-top: 30px;
   margin-bottom: 10px;
   color: #FAFAFA;
 }
-.square {
-  background-color: #FAFAFA;
-  margin: auto;
-  margin-top: 20px;
-  width: 200px;
-  height: 80%;
-}
-.subsquare {
-  height: 33.4%;
-  border: 3px solid #555;
-  margin: auto;
-  width: inherit;
-}
-.subsquare > img {
-  position: relative;
-  width: 130px;
-  /* Center verticaly */
-  margin: 0;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+#subtitle.tablet, #subtitle.mobil{
+  text-align: center;
+  font-size: 25px;
+  margin-bottom: 10px;
+  color: #FAFAFA;
 }
 
 </style>

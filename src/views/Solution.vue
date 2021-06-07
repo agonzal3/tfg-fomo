@@ -1,10 +1,10 @@
 <template>
     <div>
-        <div :style="[actualPage !== 0 ? {'margin-top':'70px'}:{}]" class='solution'>
+        <div :style="[actualPage !== 0 && $mq === 'laptop' ? {'margin-top':'70px'}:{}]" class='solution' :class="$mq">
             <div v-if="actualPage === 1">
-                <h2>Como evitar o reducir la FoMO?</h2>
-                <h5>Estos 5 pasos pueden ayudar a superar la FoMO:</h5>
-                <ol>
+                <h2 class='title' :class="$mq">Como evitar o reducir la FoMO?</h2>
+                <h5 class='subtitle' :class="$mq">Estos 5 pasos pueden ayudar a superar la FoMO:</h5>
+                <ol class='text' :class="$mq">
                     <li>Comprtir contenido, publicar porque quieres, no porque lo necestes
                         <p>Preguntate quiero publicar esta foto, porque?</p></li>
                     <li>Publicar y passar pagina
@@ -23,9 +23,9 @@
                 <p class="reference">Reference: <a href="https://socialspacemag.org/overcome-fomo-five-easy-steps-one-social-media-platform-at-a-time" target="_blank">Overcome FOMO: Five Easy Steps, One Social Media Platform at a Time</a> </p>
             </div>
             <div v-if="actualPage === 0">
-                <h2>Como evitar o reducir la FoMO?</h2>
-                <h5>Opinión personal después de este trabajo:</h5>
-                <ul>
+                <h2 class='title' :class="$mq">Como evitar o reducir la FoMO?</h2>
+                <h5 class='subtitle' :class="$mq">Opinión personal después de este trabajo:</h5>
+                <ul class='text' :class="$mq">
                     <li>Desactivar las notificaciones <img src="../assets/icons/sound-off.png"> de Instagram, Facebook y TikTok</li>
                     <li>Limitar el tiempo de las Redes Sociales <img src="../assets/icons/actiondash-logo.png"></li>
                     <li>Ser consciente del tiempo que pasas con el mòbil:
@@ -35,10 +35,10 @@
                     <li>Tener hobies o pasatiempos, cuando estas en casa. <span style="font-weight: bold;">Que no tengan que ver con la Tecnologia.</span> 
                         <b-container>
                             <b-row>
-                                <b-col md="6" class="examples">Leer libros, comics, ...<img src="../assets/icons/libro.png"></b-col>
-                                <b-col md="6" class="examples">Dibujar o pintar <img src="../assets/icons/painting.png"></b-col>
-                                <b-col md="6" class="examples">Escribir un diario <img src="../assets/icons/diary.png"></b-col>
-                                <b-col md="6" class="examples">Hacer deporte <img src="../assets/icons/yoga.png"></b-col>
+                                <b-col sm="6" class="examples" :class="$mq">Leer libros, comics, ...<img src="../assets/icons/libro.png"></b-col>
+                                <b-col sm="6" class="examples" :class="$mq">Dibujar o pintar <img src="../assets/icons/painting.png"></b-col>
+                                <b-col sm="6" class="examples" :class="$mq">Escribir un diario <img src="../assets/icons/diary.png"></b-col>
+                                <b-col sm="6" class="examples" :class="$mq">Hacer deporte <img src="../assets/icons/yoga.png"></b-col>
                             </b-row>
                         </b-container>
                     </li>
@@ -54,7 +54,7 @@
                 <p>Si por otra parte quiere volver a jugar ... <br>
                 <b-button class="home" @click="home">Tornar a jugar</b-button></p> 
 
-                <p style="font-size: 15px;margin-top: 17%;">Este juego es un Trabajo de Fin de Grado del departamento de Tecnologias Interactivas centradas en la Educacción, en la Universitat Pompeu Fabra. Agradezco enormemente su participación y esepro que haya sido de su interes i agrado.</p>
+                <p class="lastpar">Este juego es un Trabajo de Fin de Grado del departamento de Tecnologias Interactivas centradas en la Educacción, en la Universitat Pompeu Fabra. Agradezco enormemente su participación y esepro que haya sido de su interes i agrado.</p>
 
             </div>
         </div>
@@ -100,24 +100,42 @@ export default {
 
 <style scoped>
 .solution{
-    /* position: absolute;
-    left: 50%;
-    top: 45%;
-    /* border: 3px solid green; 
-    transform: translate(-50%, -50%);
-    width: 75%; */
-    /* height: 75%; */
-    /* text-align: center; */
     margin: auto;
-    width: 60%;
     padding: 10px;
     min-height: 80vh;
-    
+}
+.solution.laptop{
+    width: 60%;
+}
+.solution.tablet{
+    width: 90%;
 }
 
 div > p{
     margin-top:7%;
 }
+.title.tablet{
+    font-size: 25px;
+}
+.subtitle.tablet{
+    font-size: 15px;
+}
+.text.tablet{
+    font-size: 15px;
+}
+
+.text.tablet > li > img, .text.tablet > li > p > img{
+    width: 30px;
+    height: 30px;
+}
+
+.examples.tablet{
+    font-size: 15px;
+ }
+ .examples.tablet > img{
+    width: 50px;
+    height: 50px;
+ }
 
 h5{
     margin-top: 15px;
@@ -162,5 +180,10 @@ li {
      width: 200px;
      margin-top: 40px;
      margin-left: calc(50% - 100px);
+ }
+
+ .lastpar{
+     font-size: 15px;
+     margin-top: 15vh;
  }
 </style>

@@ -56,9 +56,36 @@ b-button{
   font-size:30px;
 }
 
-#position{
+#position.laptop{
   position:relative;
-  width: 60%;
+  width: 80%;
+  height: auto;
+  /* Center horontaly */
+  margin: 0 auto;
+  padding: 10px;
+  text-align: center;
+  /* Center Vertically */
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+#position.tablet{
+  position:relative;
+  width: 99%;
+  height: auto;
+  /* Center horontaly */
+  margin: 0 auto;
+  padding: 10px;
+  text-align: center;
+  /* Center Vertically */
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+#position.mobil{
+  position:relative;
+  width: 80%;
   height: auto;
   /* Center horontaly */
   margin: 0 auto;

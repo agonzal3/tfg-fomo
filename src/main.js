@@ -6,10 +6,8 @@ import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
 import VueNumericInput from 'vue-numeric-input';
 import VueTyperPlugin from 'vue-typer'
 import VueConfetti from 'vue-confetti'
+import VueMq from 'vue-mq'
  
-
-import confetti from 'canvas-confetti';
-
  
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -21,6 +19,13 @@ Vue.use(BootstrapVueIcons)
 Vue.use(VueNumericInput)
 Vue.use(VueTyperPlugin)
 Vue.use(VueConfetti)
+Vue.use(VueMq, {
+  breakpoints: { // default breakpoints - customize this
+    mobil: 450,
+    tablet: 1024,
+    laptop: Infinity,
+  }
+})
 
 
 Vue.config.productionTip = false

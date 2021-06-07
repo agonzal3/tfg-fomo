@@ -1,5 +1,5 @@
 <template>
-    <div id="position">
+    <div id="position" :class="$mq">
         <h4>Arrastra los conecptos con sus definiciones pertinentes</h4>
         <div id="origin"
             class="flexbox"

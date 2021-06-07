@@ -1,7 +1,7 @@
 <template>
     <div style="display: flex">
     
-        <b-button :disabled="timePassed>timeLimit || counter>items.length-1" variant="danger" @click="syntomFoMO(true)" class="bigbutton">Sintoma de la FoMO</b-button>
+        <b-button :disabled="timePassed>timeLimit || counter>items.length-1" variant="danger" @click="syntomFoMO(true)" class="bigbutton" :class="$mq">Sintoma de la FoMO</b-button>
         <div class="center">
             <svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
                 <g class="circle">
@@ -25,7 +25,7 @@
                 <div v-else></div>
             </transition>
         </div>
-        <b-button :disabled="timePassed>timeLimit || counter>items.length-1" variant="success" @click="syntomFoMO(false)" class="bigbutton" style="align-items: flex-end">NO Sintoma de la FoMO</b-button>
+        <b-button :disabled="timePassed>timeLimit || counter>items.length-1" variant="success" @click="syntomFoMO(false)" class="bigbutton" :class="$mq" style="align-items: flex-end">NO Sintoma de la FoMO</b-button>
         <b-modal size="lg" ref="my-modal" hide-header centered :no-close-on-backdrop="true">
             <h2 class="text-center">Resultado</h2>
             <br> 
@@ -209,10 +209,17 @@ export default {
 
 .bigbutton{
     position: relative;
+    margin:-8px;
+}
+.bigbutton.laptop{
     width: 30%;
     height:99.3vh;
     font-size: 30px;
-    margin:-8px;
+}
+.bigbutton.tablet{
+    width: 20%;
+    height:calc(99.3vh - 150px);
+    font-size: 20px;
 }
 .center{
     margin:8px;
@@ -232,7 +239,6 @@ export default {
     /* Style of the box */
     border: solid 2px black;
     width: 60%;
-    font-size: 25px;
 
     /* Vertical position */
     position: relative;
