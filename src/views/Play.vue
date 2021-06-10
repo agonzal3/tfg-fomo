@@ -173,6 +173,7 @@ export default {
 .controls{
   background-color: #2c3e50;
 }
+
 .controls.laptop{
   
   /* position: absolute; */
@@ -182,8 +183,10 @@ export default {
   min-height: 700px;
 }
 .controls.tablet, .controls.mobil {
+  position: fixed;
   width: 100%;
   height: 150px;
+  z-index: 50;
 }
 .square{
   margin: auto;
@@ -235,9 +238,11 @@ export default {
 
 
 #contenido{
+  position: relative;
   background-color:#FAFAFA;
   float: left;
   padding: 10px;
+  overflow: auto;
 }
 
 #contenido.laptop{
@@ -246,9 +251,23 @@ export default {
   height:100vh;
 }
 
-#contenido.tablet, #contenido.mobil {
+#contenido.tablet{
+  width: 80%;
+  height: calc(100vh - 150px);
+  margin-top: 150px;
+}
+#contenido.mobil {
   width: 100%;
   height: calc(100vh - 150px);
+  margin-top: 150px;
+
+}
+
+#contenido.mobil:after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
 }
 
 .component-fade-enter-active, .component-fade-leave-active {

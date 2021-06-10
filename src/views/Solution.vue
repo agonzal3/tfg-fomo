@@ -60,7 +60,7 @@
         </div>
 
         <img v-if="actualPage === 2" class="logoupf" src="../assets/icons/UPF.png">
-        <b-container fluid class="pages">
+        <b-container style="position: fixed;" fluid class="pages">
             <b-row>
                 <b-col>
                     <b-button v-if="actualPage>0" @click="actualPage--">{{previous}}</b-button>
@@ -74,13 +74,9 @@
 </template>
 
 <script>
-import Foto from "../components/ConceptProblem";
 
 export default {
     name: 'Solution',
-    components: {
-        Foto
-    },
     data(){
         return{
             ConceptsArray: [1,2,3],
@@ -122,6 +118,9 @@ div > p{
 }
 .text.tablet{
     font-size: 15px;
+}
+.text.mobil{
+    padding-bottom: 50px;
 }
 
 .text.tablet > li > img, .text.tablet > li > p > img{

@@ -1,16 +1,16 @@
 <template>
   <div id="position" :class="$mq">
     <div class="text" :class="$mq" ref=20>
-        <vue-typer
-            v-if="items[0].startTypers"
-            :text="[formatText(items[0].text)]"
-            :repeat="0"
-            :shuffle="false"
-            initial-action="typing"
-            :pre-type-delay="50"
-            :type-delay="20"
-            @completed='onComplete(0)'
-        ></vue-typer>
+      <vue-typer
+          v-if="items[0].startTypers"
+          :text="[formatText(items[0].text)]"
+          :repeat="0"
+          :shuffle="false"
+          initial-action="typing"
+          :pre-type-delay="50"
+          :type-delay="20"
+          @completed='onComplete(0)'
+      ></vue-typer>
     </div>
     <transition name="slide-fade">
         <div style="margin-top:30px;margin-bottom:30px;" v-if="items[0].show">
@@ -113,10 +113,10 @@ export default {
           maxChars = 55;
         } else if(this.$mq === 'tablet'){
           maxChars = 50;
-
+        }else if(this.$mq === 'mobil'){
+          maxChars = 45;
         }
-        // let words = [];
-        // console.log(text.text.split(" "));
+ 
         let breaked = "";
         let currentCount = 0;
         text.split(" ").forEach((word) => {

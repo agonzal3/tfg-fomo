@@ -27,7 +27,7 @@
         </div>
         <b-button :disabled="timePassed>timeLimit || counter>items.length-1" variant="success" @click="syntomFoMO(false)" class="bigbutton" :class="$mq" style="align-items: flex-end">NO Sintoma de la FoMO</b-button>
         <b-modal size="lg" ref="my-modal" hide-header centered :no-close-on-backdrop="true">
-            <h2 class="text-center">Resultado</h2>
+            <h2 class="text-center" :class="$mq">Resultado</h2>
             <br> 
             <div class="d-block">
                 <b-container>
@@ -60,7 +60,7 @@
                         </b-col>
                     </b-row>
                 </b-container>
-                <p class="text-center">Aqui tenomos los ejempols que han salido y algunos que no han salido y su clasificación. <br> 
+                <p class="text-center" :class="$mq">Aqui tenomos los ejempols que han salido y algunos que no han salido y su clasificación. <br> 
                 Siguendo la linea de antes, los possibles sintomas son consequencias de la no satisfación de las 3 necessidades psicologicas anteriores: Comeptencia, Autonomia y Pertenencia.</p>
             </div>
             <template #modal-footer>
@@ -221,6 +221,11 @@ export default {
     height:calc(99.3vh - 150px);
     font-size: 20px;
 }
+.bigbutton.mobil{
+    width: 30%;
+    height:calc(99.3vh - 150px);
+    font-size: 20px;
+}
 .center{
     margin:8px;
     width: 63%;
@@ -238,12 +243,13 @@ export default {
 .center div{
     /* Style of the box */
     border: solid 2px black;
+    padding: 5px;
     width: 60%;
+    min-width: 150px;
 
     /* Vertical position */
     position: relative;
     margin: 0 auto;
-    padding: 10px;
     text-align: center;
 
     /* Horizontal Position */
@@ -274,16 +280,23 @@ export default {
     transition: 1s linear all;
     /* Allows the ring to change color when the color value updates */
     stroke: currentColor;
-  }
+}
 
-  .green{
-      color:rgb(65, 184, 131); 
-  }
-  .orange{
-      color:orange;
-  }
+.green{
+    color:rgb(65, 184, 131); 
+}
+.orange{
+    color:orange;
+}
 
-  .red{
-      color:red;
-  }
+.red{
+    color:red;
+}
+
+p.text-center.mobil{
+    font-size: 17px;
+}
+h2.text-center.mobil{
+    font-size: 22px;
+}
 </style>

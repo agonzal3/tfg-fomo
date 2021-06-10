@@ -8,7 +8,6 @@
 </template>
 
 <script>
- import * as confetti from 'canvas-confetti';
 
  export default {
    name: 'Foto',

@@ -74,6 +74,10 @@ export default {
                 if(this.$mq === 'laptop'){
                     contenido.width = "calc(100% - 300px)";
                 }
+                if(this.$mq === 'mobil'){
+                    contenido.marginTop = '150px';
+                    contenido.height = 'calc(100vh - 150px)';
+                }
             },1000)
             setTimeout(() => this.$emit('enlarge-text'),1100)
         },
@@ -83,6 +87,10 @@ export default {
             contenido.background = "#6699ff";
             contenido.width = "100%";
             if(this.$mq === 'tablet'){contenido.height = '100vh';}
+            if(this.$mq === 'mobil'){
+                contenido.marginTop = '0px';
+                contenido.height = '100vh';
+            }
         }
     },
     mounted(){
@@ -98,7 +106,7 @@ export default {
 .border1{
     border: 3px solid white;
     padding: 10px;
-    height: 450px;
+    /* height: 450px; */
     width: 600px;
     max-width: 90%;
     text-align: center;

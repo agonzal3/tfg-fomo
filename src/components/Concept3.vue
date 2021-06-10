@@ -2,7 +2,7 @@
     <div id="position" :class="$mq">
       <h2>¿Cuál es la media de uso del móvil entre los jóvenes (de 18 a 24 años) de España?</h2>
 
-      <p><b-badge :variant="counter>1 ? 'warning' : 'danger'">Tienes {{counter}} intentos</b-badge></p>
+      <h5><b-badge style="margin-bottom: 20px;" :variant="counter>1 ? 'warning' : 'danger'">Tienes {{counter}} intentos</b-badge></h5>
 
       <!-- <input append="h"> -->
       <b-container fluid>

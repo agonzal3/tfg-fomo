@@ -1,6 +1,6 @@
 <template>
     <div id="position" :class="$mq">
-        <h4>Arrastra los conecptos con sus definiciones pertinentes</h4>
+        <h2>Arrastra los conecptos con sus definiciones pertinentes</h2>
         <div id="origin"
             class="flexbox"
             @dragover.prevent
@@ -17,7 +17,7 @@
         <div>
             <div v-for='item in items' :key='item.id'>
                 <div class='dragTotal' style="display: flex">
-                    <div class='drop-zone'
+                    <div class='drop-zone' :class="$mq"
                         :id="item.title"
                         @dragover.prevent
                         @drop.prevent="drop">
@@ -108,7 +108,10 @@ export default {
     min-height: inherit;
     min-width: 200px;
     color: black;
-  }
+}
+.drop-zone.mobil {
+    min-width: 40%;
+}
 
   .drag-el {
     background-color: #eee;
@@ -124,13 +127,13 @@ export default {
       color: white;
   }
 
-  .flexbox{
-      border-radius: 10px;
-      display: flex;
-      margin:10px;
-      background-color: #FFA525;
-      height: 60px;
-  }
+.flexbox{
+    border-radius: 10px;
+    display: flex;
+    /* margin:10px; */
+    background-color: #FFA525;
+    height: 60px;
+}
   button{
       margin-top: 30px;
   }

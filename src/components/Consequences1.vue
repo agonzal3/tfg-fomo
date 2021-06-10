@@ -1,22 +1,18 @@
 <template>
-    <div id="position" :class="$mq">
+    <div id="position" :style="$mq | mq({mobil: 'height:100%',
+                                        laptop: 'height:80%'})" :class="$mq">
         <flipper
             :width="$mq | mq({
                 mobil: '80%',
                 tablet: '75%',
                 laptop: '100%'
             })"
-            :height="$mq | mq({
-                mobil: 'calc(100vh - 200px)',
-                tablet: 'calc(100vh - 200px)',
-                laptop: '600px'
-            })"
-            
+            class="centerflip"
             :flipped="flipped">
             <div class="front" slot="front">
                 <div>
-                    <h2 class="title" :class="$mq">Breaking news</h2>
-                    <h3 class="subtitle" :class="$mq">{{items[frontcount].title}}</h3>
+                    <h2>Breaking news</h2>
+                    <h3>{{items[frontcount].title}}</h3>
                     <img class="imagecard" :class="$mq" :src="items[frontcount].imagen">
 
                     <div>
@@ -27,12 +23,12 @@
                 </div>
             </div>
         
-            <div Class="back" slot="back">
+            <div class="back" slot="back">
                 <div>
-                    <h2 class="title" :class="$mq" id="title">{{resolution}}</h2>
-                    <h3 class="subtitle" :class="$mq">It is {{items[backcount].res}}</h3>
-                    <h4 class="subtitle" :class="$mq">{{items[backcount].solution.title}}</h4>
-                    <p class="textcontent" :class="$mq">{{items[backcount].solution.text}}</p>
+                    <h2 id="title">{{resolution}}</h2>
+                    <h3>It is {{items[backcount].res}}</h3>
+                    <h4>{{items[backcount].solution.title}}</h4>
+                    <p>{{items[backcount].solution.text}}</p>
 
                     <p>
                         <b-button  v-if="backcount < items.length-1" @click="nextnew" variant="warning">Siguiente noticia</b-button>
@@ -148,6 +144,11 @@ export default {
 
 <style src="vue-flipper/dist/vue-flipper.css" />
 <style scoped>
+.centerflip{
+    display: inline-block;
+    margin: 0 auto;
+}
+
 .imagecard.laptop {
     max-width: 350px;
     max-height: 250px;
@@ -157,6 +158,11 @@ export default {
 
 .imagecard.tablet{
     max-width: 200px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+.imagecard.mobil{
+    width: 80%;
     margin-top: 10px;
     margin-bottom: 25px;
 }
@@ -193,15 +199,25 @@ export default {
     background-color: darkslategray;
     color: white;
     border: solid 3px black;
+    overflow: auto;
+}
+
+.back:after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    
 }
 
 .back > div {
     padding: 10px;
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+
+    width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .Hello{
@@ -212,20 +228,15 @@ export default {
     width: 80%;
 }
 
-.title.tablet{
-    font-size: 20px;
-}
-.subtitle.tablet{
-    font-size: 15px;
-}
-.textcontent.tablet{
-    font-size: 13px;
-}
 .fuente.tablet{
     font-size: 11px;
 }
 .fuente.laptop{
     font-size: 15px;
+}
+
+.fuente.mobil{
+    font-size: 10px;
 }
 
 </style>

@@ -171,6 +171,7 @@ iframe {
 img {
     max-width: 300px;
     margin: 20px;
+    margin-top: 0px;
 }
 
 .setimages.tablet{
@@ -178,10 +179,12 @@ img {
     max-height:200px;
 }
 
+
 .resolution.tablet > p{
     font-size: 17px;
 }
 .resolution.tablet > img{
     max-height:250px;
 }
+
 </style>

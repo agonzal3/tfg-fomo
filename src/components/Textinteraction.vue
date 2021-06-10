@@ -18,18 +18,18 @@
           ></vue-typer>
         </div>
         <transition name="slide-fade">
-          <div style="margin-top:10px;" v-if="show">
+          <div style="margin-top:20px;margin-bottom:20px;" v-if="show">
               <div v-if="responcebutton[count].button2 && responcebutton[count].button1">
-                <b-row>
-                  <b-col><b-button @click="onClick">{{responcebutton[count].button1}}</b-button></b-col>
-                  <b-col><b-button @click="resetClick">{{responcebutton[count].button2}}</b-button></b-col>
+                <b-row class="twoRows">
+                  <b-col><b-button class="twoButton" @click="onClick">{{responcebutton[count].button1}}</b-button></b-col>
+                  <b-col><b-button class="twoButton" @click="resetClick">{{responcebutton[count].button2}}</b-button></b-col>
                 </b-row>
               </div>
               <div v-else-if="responcebutton[count].button2">
-                <b-button @click="resetClick">{{responcebutton[count].button2}}</b-button>
+                <b-button class="onButton" @click="resetClick">{{responcebutton[count].button2}}</b-button>
               </div>
               <div v-else>
-                <b-button @click="onClick">{{responcebutton[count].button1}}</b-button>
+                <b-button class="onButton" @click="onClick">{{responcebutton[count].button1}}</b-button>
               </div>
           </div>
         </transition>
@@ -76,7 +76,8 @@ export default {
           maxChars = 55;
         } else if(this.$mq === 'tablet'){
           maxChars = 50;
-
+        } else if(this.$mq === 'mobil'){
+          maxChars = 45;
         }
         
         // let words = [];
@@ -127,8 +128,17 @@ export default {
   font-size: 17px;
 }
 
-button {
+.twoButton {
   width: 90%;
+}
+.onButton {
+  width: 70%;
+}
+
+.twoRows{
+  align-items: center;
+  margin-right: 0px;
+  margin-left: 0px;
 }
 
 .slide-fade-enter-active {

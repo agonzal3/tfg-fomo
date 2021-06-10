@@ -84,19 +84,41 @@ b-button{
   transform: translateY(-50%);
 }
 #position.mobil{
-  position:relative;
-  width: 80%;
-  height: auto;
-  /* Center horontaly */
+  width: 100%;
+  display: inline-block;
+  vertical-align: middle;
   margin: 0 auto;
-  padding: 10px;
   text-align: center;
-  /* Center Vertically */
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+
 }
 
+#position.mobil p{
+  font-size: 17px;
+}
+
+#position.mobil img{
+  max-width:350px;
+  max-height:250px;
+}
+
+#position.mobil h2{
+  font-size: 22px;
+}
+
+#position.mobil h3{
+  font-size: 20px;
+}
+#position.mobil h4{
+  font-size: 18px;
+}
+
+#position.tablet h3{
+  font-size: 20px;
+}
+
+#position.mobil div{
+  font-size: 16px;
+}
 
 
 </style>

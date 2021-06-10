@@ -1,12 +1,18 @@
 <template>
     <div class="home" :class="$mq">
       <img alt="Vue logo" src="../assets/logo.png">
-      <h1>Presentación <br/> <span style="color:blue;">Presentation</span></h1>
-      <h3>Quieres saber como puedes salvar el futuro?  <span style="color:blue;"> Do you want to know how you can save the future?</span></h3>
-      <h4>Antes de jugar escoje un idoma <br/> <span style="color:blue;"> Before play chose a language </span></h4>
+      <h1>Presentación 
+        <!-- <br/> <span style="color:blue;">Presentation</span> -->
+      </h1>
+      <h3>Quieres saber como puedes salvar el futuro?  
+        <!-- <span style="color:blue;"> Do you want to know how you can save the future?</span> -->
+      </h3>
+      <h4>Antes de jugar escoje un idoma 
+        <!-- <br/> <span style="color:blue;"> Before play chose a language </span> -->
+      </h4>
 
-      <b-button><router-link id="link" to="/play">Español</router-link></b-button>
-      <b-button>English</b-button>
+      <b-button><router-link id="link" to="/play">Empezar el juego</router-link></b-button>
+      <!-- <b-button>English</b-button> -->
      
     </div>
 
@@ -34,7 +40,7 @@
   /* height: 75%; */
   text-align: center;
 }
-.home.tablet {
+.home.mobil {
   width: 80%;
 
 }
