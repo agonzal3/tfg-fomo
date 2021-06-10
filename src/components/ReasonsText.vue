@@ -74,11 +74,11 @@ export default {
             count: 0,
             actualtext: '',
             items:[
-                {text:'Las redes sociales son muy populares entre los jóvenes, porque nosotros los humanos somos animales …',buttons:[{name:'sociales',res:true},{name:'individuales', res:false}],
+                {text:'Las redes sociales son muy populares entre los jóvenes porque nosotros, los humanos, somos animales …',buttons:[{name:'sociales',res:true},{name:'individuales', res:false}],
                 show: false, startTypers: false},
-                {text:'y tenemos una necesidad innata', buttons:[{name:'de sentir-nos parte de algo', res:true},{name:'seguir nuestro camino solos', res:false}],
+                {text:'y tenemos una necesidad innata', buttons:[{name:'de sentirnos parte de algo', res:true},{name:'seguir nuestro camino solos', res:false}],
                 show: false, startTypers: false},
-                {text:'para estar satisfechos físicamente y mentalmente.', startTypers: false, show: false, button: 'Next >'}],
+                {text:'para estar satisfechos físicamente y mentalmente.', startTypers: false, show: false, button: 'Siguiente prueba >'}],
         }
     },
     methods:{

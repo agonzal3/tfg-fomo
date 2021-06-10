@@ -3,7 +3,7 @@
         <!-- <div :style='"margin-top:" + margin_top + "px"'> -->
         <transition name="slide-fade">
             <div v-if="show">
-                <h2>Ha menudo te pasado?</h2>
+                <h2>¿Te pasa a menudo?</h2>
 
                 <div v-if="counter < lista.length">
                     <p>{{lista[counter].text}}</p>
@@ -24,14 +24,15 @@
             </div>
             <div class="resolution" :class="$mq" v-if="show2">
 
-                <p>De las anteriores situaciones has mostrado signos de FoMO en {{resoult}} de 4.
+                <p>De las anteriores situaciones has mostrado signos de FoMO en {{resoult}} de 4.</p>
+                <p>
                     <span v-if="resoult >= 2">{{respuestas[0].text}}</span>
                     <span v-if="resoult < 2">{{respuestas[1].text}}</span>
-                </p>
+                </p> 
 
                 <!-- <iframe src="https://giphy.com/embed/ar4x1w44umngk" width="100%" height="100%" frameBorder="0" class="giphy-embed" allowFullScreen></iframe> -->
                 <img :src="returnimage" alt="">
-                <p>Las que estavan a la izquiera eran las respuestas que presentavan signos de FoMO.</p>
+                <p>Las que estaban a la izquierda eran las respuestas que presentaban altos niveles de FoMO.</p>
                 <b-button @click="$emit('enlarge-text')">Siguiente</b-button>
             </div>
         </transition>
@@ -57,21 +58,21 @@ export default {
             show: true,
             show2: false,
             lista:[
-              {text:'Tendría que dormir porque mañana voy al instituto, pero puedo escuchar que recibo algún mensaje y ...',
-               imagen: fomo_bed, aswer1:'respondo el mensaje y dejo el móvil encendido, por si tengo más mensajes.', aswer2:'respondo el mensaje y apago el mobil para dormir y no responder más mensajes.'},
+              {text:'Tendría que dormir porque mañana voy al Instituto, pero puedo escuchar que recibo algún mensaje y ...',
+               imagen: fomo_bed, aswer1:'respondo el mensaje y dejo el móvil encendido, por si tengo más mensajes.', aswer2:'respondo el mensaje y apago el móvil para dormir y no contesto más mensajes.'},
               {text:'Cuando me levanto de la cama lo primero que hago es ...',
-               imagen: fomo_wakeup, aswer1:'coger el mobil para ver que se cuece en las redes sociales.', aswer2:'ir a desayunar o a mear.'},
-              {text:'He colgado una history o una publicación y ...',
-               imagen: fomo_like, aswer1:'estoy pendiente de los likes y comentarios que recibo.', aswer2:'por lo general no estoy pendeiente de las reacciones.'},
+               imagen: fomo_wakeup, aswer1:'coger el móvil para ver que se cuece en las redes sociales.', aswer2:'ir a desayunar o al baño.'},
+              {text:'He colgado una story  o una publicación y ...',
+               imagen: fomo_like, aswer1:'estoy pendiente de los likes y comentarios que recibo.', aswer2:'por lo general no estoy pendiente de las reacciones.'},
               {text:'Estoy hablando con mis padres y recibo un mensaje, ...',
-               imagen: fomo_parents, aswer1:'cojo el mobil para ver si el mensaje es urgente.', aswer2:'siendo consiciente de que tengo el mensaje, acabo de hablar con mis padres sin echarle un vistazo.'}
+               imagen: fomo_parents, aswer1:'cojo el móvil para ver si el mensaje es urgente.', aswer2:'siendo consciente de que tengo el mensaje, termino de hablar con mis padres sin echarle un vistazo.'}
             ],
             counter:0,
             puntuation:0,
             resoult:0,
             respuestas:[
-                {text:'Es de lo más comun entre los adolesecentes y vamos a ver si podemos canviar-lo!'},
-                {text:'Este resultado es para celebrarlo!'},
+                {text:'Es de lo más común entre los adolescentes y vamos a ver si podemos cambiarlo.'},
+                {text:'¡Este resultado es para celebrarlo!'},
             ]
         }
     },

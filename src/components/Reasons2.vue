@@ -1,7 +1,7 @@
 <template>
     <div style="display: flex">
     
-        <b-button :disabled="timePassed>timeLimit || counter>items.length-1" variant="danger" @click="syntomFoMO(true)" class="bigbutton" :class="$mq">Sintoma de la FoMO</b-button>
+        <b-button :disabled="timePassed>timeLimit || counter>items.length-1" variant="danger" @click="syntomFoMO(true)" class="bigbutton" :class="$mq">Síntoma de la FoMO</b-button>
         <div class="center">
             <svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
                 <g class="circle">
@@ -25,7 +25,7 @@
                 <div v-else></div>
             </transition>
         </div>
-        <b-button :disabled="timePassed>timeLimit || counter>items.length-1" variant="success" @click="syntomFoMO(false)" class="bigbutton" :class="$mq" style="align-items: flex-end">NO Sintoma de la FoMO</b-button>
+        <b-button :disabled="timePassed>timeLimit || counter>items.length-1" variant="success" @click="syntomFoMO(false)" class="bigbutton" :class="$mq" style="align-items: flex-end">NO Síntoma de la FoMO</b-button>
         <b-modal size="lg" ref="my-modal" hide-header centered :no-close-on-backdrop="true">
             <h2 class="text-center" :class="$mq">Resultado</h2>
             <br> 
@@ -33,26 +33,26 @@
                 <b-container>
                     <b-row>
                         <b-col>
-                            <h4>Symtoms of FoMO</h4>
+                            <h4>Síntomas de FoMO</h4>
                             <ul>
                                 <div v-for="item in items" :key="item.id">
                                     <li v-if="item.res === true">
                                         {{ item.text }}
-                                        <span v-if="item.intercation === true">, <b-badge variant="success">Correct</b-badge></span>
-                                        <span v-else-if="item.intercation === false">, <b-badge variant="danger">Wrong</b-badge></span>
+                                        <span v-if="item.intercation === true"> <b-badge variant="success">Correcto</b-badge></span>
+                                        <span v-else-if="item.intercation === false"> <b-badge variant="danger">Incorrecto</b-badge></span>
                                         <span v-else>, <b-badge variant="secondary">Not done</b-badge></span>
                                     </li>
                                 </div>
                             </ul>
                         </b-col>
                         <b-col>
-                            <h4>NO Symtoms of FoMO</h4>
+                            <h4>No síntomas de FoMO</h4>
                             <ul>
                                 <div v-for="item in items" :key="item.id">
                                     <li v-if="item.res === false">
                                         {{ item.text }}
-                                        <span v-if="item.intercation === true">, <b-badge variant="success">Correct</b-badge></span>
-                                        <span v-else-if="item.intercation === false">, <b-badge variant="danger">Wrong</b-badge></span>
+                                        <span v-if="item.intercation === true"> <b-badge variant="success">Correcto</b-badge></span>
+                                        <span v-else-if="item.intercation === false"> <b-badge variant="danger">Incorrecto</b-badge></span>
                                         <span v-else>, <b-badge variant="secondary">Not done</b-badge></span>
                                     </li>
                                 </div>
@@ -60,8 +60,8 @@
                         </b-col>
                     </b-row>
                 </b-container>
-                <p class="text-center" :class="$mq">Aqui tenomos los ejempols que han salido y algunos que no han salido y su clasificación. <br> 
-                Siguendo la linea de antes, los possibles sintomas son consequencias de la no satisfación de las 3 necessidades psicologicas anteriores: Comeptencia, Autonomia y Pertenencia.</p>
+                <p class="text-center" :class="$mq">Aquí tenemos los ejemplos que han salido y su clasificación. <br> 
+                Siguiendo la línea de antes, los posibles síntomas son consecuencias de la no satisfacción de las 3 necesidades psicológicas anteriores: Competencia, Autonomía y Pertenencia.</p>
             </div>
             <template #modal-footer>
                 <div class="w-100">
@@ -69,7 +69,7 @@
                         variant="primary"
                         class="float-right"
                         @click="$emit('enlarge-text')">
-                        Siguiente
+                        Siguiente >
                     </b-button>
                 </div>
             </template>
@@ -96,18 +96,18 @@ export default {
             componentKey: 0,
 
             items:[
-                {id:0, text: 'No tener hobies', res:true, intercation: null},
-                {id:1, text: 'Tener los amigos lejos', res:true, interaction: null},
-                {id:2, text: 'Autoestima dependiente de las amstades', res:true, intercation: null},
+                {id:0, text: 'No tener aficiones.', res:true, intercation: null},
+                {id:1, text: 'Tener los amigos lejos.', res:true, interaction: null},
+                {id:2, text: 'Autoestima dependiente de las amistades', res:true, intercation: null},
                 {id:3, text: 'Aburrimiento', res:true, intercation:null},
-                {id:4, text: 'Notificaciones activas', res:true, intercation:null},
-                {id:5, text: 'No tener responsabilidades ni quehaceres', res:true, intercation:null},
+                {id:4, text: 'Notificaciones activadas', res:true, intercation:null},
+                {id:5, text: 'No tener responsabilidades ni quehaceres.', res:true, intercation:null},
                 {id:6, text: 'Ansiedad', res:true, intercation:null},
-                {id:7, text: 'Ser extrobertido', res:false, intercation:null},
+                {id:7, text: 'Ser extrovertido', res:false, intercation:null},
                 {id:8, text: 'Padres controladores', res:false, intercation:null},
-                {id:9, text: 'Publicar contenido con frecuencia', res:false, intercation:null},
-                {id:10, text: 'Aydar a las tareas domesticas', res:false, intercation:null},
-                {id:11, text: 'Jugar a juegos del mobil', res:false, intercation:null},
+                {id:9, text: 'Publicar contenido con frecuencia.', res:false, intercation:null},
+                {id:10, text: 'Ayudar a las tareas domésticas.', res:false, intercation:null},
+                {id:11, text: 'Jugar a juegos del móvil.', res:false, intercation:null},
             ]
         }
     },

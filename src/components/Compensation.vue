@@ -2,15 +2,15 @@
     <div id="position">
         <transition name="component-fade">
             <div v-if="show" class ="border1">
-                <h2>Has superado el {{items[number].number}} nivel</h2>
-                <h4>Aqui tienes tu insignia</h4>
+                <h2>¡Has superado el {{items[number].number}} nivel!</h2>
+                <h4>Aquí tienes tu insignia</h4>
 
                 <p class="insignia">{{items[number].insigne}}</p>
                 <transition appear name="bounce">
                     <b-img center :src="items[number].image" alt="Center image"></b-img>
                 </transition>
                 <p></p>
-                <b-button @click="resetClick()">Next</b-button>
+                <b-button @click="resetClick()">Siguiente nivel</b-button>
             </div>
         </transition>
         
@@ -32,9 +32,9 @@ export default {
         return{
             counter: 0,
             show:true,
-            items: [{image:concept, number: '1r', insigne: 'Que es la FoMO?'},
-                    {image:reasons, number: '2r', insigne: 'Cual es su origen?'},
-                    {image:consequences, number: '3r', insigne: 'Y sus consequencias?'}
+            items: [{image:concept, number: '1.er', insigne: '¿Qué es la FoMO?'},
+                    {image:reasons, number: '2.o', insigne: '¿Cuál es su origen?'},
+                    {image:consequences, number: '3.er', insigne: 'Consecuencias de la FoMO'}
             ],
 
         }

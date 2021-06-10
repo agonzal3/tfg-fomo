@@ -1,6 +1,6 @@
 <template>
   <div id="position" :class="$mq">
-    <h2>Por lo tanto, podriamos decir que la FoMO es ...</h2>
+    <h2>Por lo tanto, podríamos decir que la FoMO es ...</h2>
     <b-container class="bv-example-row">
             <b-row class="align-items-stretch">
                 <b-col class="h-600"><b-button id='button0' @click='resultado(0)' variant="light">{{lista[0].text}}</b-button></b-col>
@@ -12,9 +12,9 @@
         </b-container>
         <br>
         <div v-if="respuesta === 'correct'">
-          <p>Muy bien!!</p>
+          <p>¡¡Muy bien!!</p>
         </div>
-        <div v-if="respuesta === 'wrong'"><p>Intentalo de nuevo, ahora quedan {{intentos}} de 4 opciones.</p></div>
+        <div v-if="respuesta === 'wrong'"><p>Inténtalo de nuevo, ahora quedan {{intentos}} de 4 opciones.</p></div>
   </div>
 </template>
 
@@ -24,10 +24,10 @@ export default {
   data(){
     return{
       lista:[
-        {text:'El miedo de que los demás están teniendo buenas experiencias en las que no estas y quieres saber que están haciendo.', responce:'correct'},
+        {text:'El miedo a que los demás disfruten de buenas experiencias en las que no participas y quieres saber qué están haciendo.', responce:'correct'},
         {text:'El miedo a estar mucho tiempo prestando atención al móvil, sea hablando con los amigos, jugando a juegos, …', responce:'wrong'},
         {text:'La satisfacción de estar desconectado de las redes sociales y del móvil, sin pensar en que debe estar pasando.', responce:'wrong'},
-        {text:'El momento en el que estás divirtiendo con el móvil viendo lo que hacen tus amigos, famosos, mientras estas estudiando.', responce:'wrong'}
+        {text:'El momento en que te lo pasas bien con el móvil viendo lo que hacen tus amigos, famosos y conocidos, mientras estás estudiando.', responce:'wrong'}
       ],
       respuesta:'',
       intentos: 4

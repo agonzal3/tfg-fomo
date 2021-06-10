@@ -2,40 +2,40 @@
     <div>
         <div :style="[actualPage !== 0 && $mq === 'laptop' ? {'margin-top':'70px'}:{}]" class='solution' :class="$mq">
             <div v-if="actualPage === 1">
-                <h2 class='title' :class="$mq">Como evitar o reducir la FoMO?</h2>
+                <h2 class='title' :class="$mq">¿Cómo evitar o reducir la FoMO?</h2>
                 <h5 class='subtitle' :class="$mq">Estos 5 pasos pueden ayudar a superar la FoMO:</h5>
                 <ol class='text' :class="$mq">
-                    <li>Comprtir contenido, publicar porque quieres, no porque lo necestes
-                        <p>Preguntate quiero publicar esta foto, porque?</p></li>
-                    <li>Publicar y passar pagina
-                        <p>No estar pendiente ni tener expectativas de los likes, comentarios o reacciónes que pueden haver.</p>
+                    <li>Compartir contenido, publicar por voluntad y no por una necesidad.
+                        <p>Pregúntate, ¿quiero publicar esta foto? ¿Por qué?</p></li>
+                    <li>Publicar y pasar página.
+                        <p>No estés pendiente ni tengas expectativas de los likes, comentarios o reacciones que pueden haber.</p>
                     </li>
-                    <li>Saber cuando parar
-                        <p>En el momento en el que ya no estes disfrutando, cerrar la aplicación (Instagram, Facebook, TikTok, ...) y hacer otra cosa.</p>
+                    <li>Saber cuando parar.
+                        <p>En el momento que no disfrutes, cierra la aplicación (Instagram, Facebook, TikTok, ...) y haz otra cosa.</p>
                     </li>
-                    <li>Usar las redes sociales en tiempos muertos
+                    <li>Usar las redes sociales en tiempos muertos.
                         <p>Por ejempo: en el tren, esperando a un amigo, los 10 minutos antes de cenar, ...</p>
                     </li>
-                    <li>De vez en cuando, eliminar las aplicaciones
-                        <p>Desconectar de las Redes Sociales y del mòbil durante un dia, dos, tres o incluso una semana.</p>
+                    <li>De vez en cuando, eliminar las aplicaciones.
+                        <p>Desconéctate de las redes sociales y del móvil durante un día, dos, tres o incluso una semana.</p>
                     </li>
                 </ol>
-                <p class="reference">Reference: <a href="https://socialspacemag.org/overcome-fomo-five-easy-steps-one-social-media-platform-at-a-time" target="_blank">Overcome FOMO: Five Easy Steps, One Social Media Platform at a Time</a> </p>
+                <p class="reference">Referencia: <a href="https://socialspacemag.org/overcome-fomo-five-easy-steps-one-social-media-platform-at-a-time" target="_blank">Overcome FOMO: Five Easy Steps, One Social Media Platform at a Time</a> </p>
             </div>
             <div v-if="actualPage === 0">
-                <h2 class='title' :class="$mq">Como evitar o reducir la FoMO?</h2>
+                <h2 class='title' :class="$mq">¿Cómo evitar o reducir la FoMO?</h2>
                 <h5 class='subtitle' :class="$mq">Opinión personal después de este trabajo:</h5>
                 <ul class='text' :class="$mq">
                     <li>Desactivar las notificaciones <img src="../assets/icons/sound-off.png"> de Instagram, Facebook y TikTok</li>
                     <li>Limitar el tiempo de las Redes Sociales <img src="../assets/icons/actiondash-logo.png"></li>
-                    <li>Ser consciente del tiempo que pasas con el mòbil:
-                        <p>Los mobiles de <img src="../assets/icons/apple.png"> ya llevan un registro integrado y para los de <img src="../assets/icons/android.png"> hay muchas aplicaciones que registran toda tu actividad. 
+                    <li>Ser consciente del tiempo que pasas con el móvil:
+                        <p>Los móviles de <img src="../assets/icons/apple.png"> ya llevan un registro integrado, para los de <img src="../assets/icons/android.png"> hay muchas aplicaciones que registran toda tu actividad. 
                         Yo recomiendo: <a href="https://play.google.com/store/apps/details?id=com.actiondash.playstore" target="_blank">ActionDash</a>.</p>
                     </li>
-                    <li>Tener hobies o pasatiempos, cuando estas en casa. <span style="font-weight: bold;">Que no tengan que ver con la Tecnologia.</span> 
+                    <li>Tener aficiones o pasatiempos cuando estás en casa <span style="font-weight: bold;">que no tengan que ver con la tecnología.</span> 
                         <b-container>
                             <b-row>
-                                <b-col sm="6" class="examples" :class="$mq">Leer libros, comics, ...<img src="../assets/icons/libro.png"></b-col>
+                                <b-col sm="6" class="examples" :class="$mq">Leer libros, cómics, ...<img src="../assets/icons/libro.png"></b-col>
                                 <b-col sm="6" class="examples" :class="$mq">Dibujar o pintar <img src="../assets/icons/painting.png"></b-col>
                                 <b-col sm="6" class="examples" :class="$mq">Escribir un diario <img src="../assets/icons/diary.png"></b-col>
                                 <b-col sm="6" class="examples" :class="$mq">Hacer deporte <img src="../assets/icons/yoga.png"></b-col>
@@ -43,18 +43,18 @@
                         </b-container>
                     </li>
                     <li>Participar en las tareas del hogar <img src="../assets/icons/cooking.png"></li>
-                    <li>Apagar el mòbil <img src="../assets/icons/turn-off.png"> un par de horas, a partir de las 9 de la noche o hasta un dia entero</li>
+                    <li>Apagar el móvil <img src="../assets/icons/turn-off.png"> un par de horas, a partir de las 9 de la noche o hasta un día entero.</li>
                 </ul>
             </div>
             <div v-if="actualPage === 2">
-                <h5>Si has llegado hasta aqui significa que has terminado todo el "juego".</h5>
+                <h5>Si has llegado hasta aquí significa que has terminado el "juego".</h5>
 
-                <p>Para terminar me gustaria robarle 10 minutos más respondiendo el siguiente questionario.</p>
+                <p>Para terminar me gustaría robarte 10 minutos más respondiendo el siguiente cuestionario.</p>
 
                 <p>Si por otra parte quiere volver a jugar ... <br>
-                <b-button class="home" @click="home">Tornar a jugar</b-button></p> 
+                <b-button class="home" @click="home">Volver al juego</b-button></p> 
 
-                <p class="lastpar">Este juego es un Trabajo de Fin de Grado del departamento de Tecnologias Interactivas centradas en la Educacción, en la Universitat Pompeu Fabra. Agradezco enormemente su participación y esepro que haya sido de su interes i agrado.</p>
+                <p class="lastpar">Este juego es un Trabajo de Fin de Grado del departamento de Tecnologias Interactivas centradas en la Educación de la Universitat Pompeu Fabra. Agradezco enormemente su participación y espero que haya sido de su interés y agrado.</p>
 
             </div>
         </div>

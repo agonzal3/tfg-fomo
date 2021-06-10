@@ -1,6 +1,6 @@
 <template>
     <div id="position" :class="$mq">
-      <h2>¿Cuál es la media de uso del móvil entre los jóvenes (de 18 a 24 años) de España?</h2>
+      <h2>¿Cuál es la media de uso del móvil entre los jóvenes (de 18 a 24 años) en España?</h2>
 
       <h5><b-badge style="margin-bottom: 20px;" :variant="counter>1 ? 'warning' : 'danger'">Tienes {{counter}} intentos</b-badge></h5>
 
@@ -41,8 +41,8 @@
           <div class="d-block text-center">
             <img style="width:450px; max-width:100%;" :src="image">
             <h4 :class="classe">{{responce}}</h4>
-            <p>Segun un el informe <i>"Smartphones: el impacto de la adicciónal móvil en los accidentes de tráfico"</i> que se realizo en septiembre de 2019, los jovenes entre 18 y 24 utilizan el móvil <b-badge variant="danger">6:48h al dia</b-badge>.</p>
-            <b-button @click="$emit('enlarge-text')">Passar prueva</b-button>
+            <p>Según el informe <i>"Smartphones: el impacto de la adicción al móvil en los accidentes de tráfico"</i> que se realizó en septiembre de 2019, los jovenes entre 18 y 24 utilizan el móvil <b-badge variant="danger">6:48h al dia</b-badge>.</p>
+            <b-button @click="$emit('enlarge-text')">Pasar prueba</b-button>
           </div>
         </b-modal>
       </div>
@@ -91,7 +91,7 @@ export default {
         let text1 = "";
         let text2 = "";
         if(this.hours === this.realhoures && this.minutes === this.realminutes){
-          this.responce = "Lo has acertado!!";
+          this.responce = "¡LO HAS ACERTADO!";
           this.classe = 'correct';
           this.image = correctAswer;
         }else if (this.counter>0){
@@ -107,10 +107,10 @@ export default {
             this.image = farwrongAswer;
             if(diferenceh>0) text2="grande";
             else text2="pequeño";
-            this.responce = "Estas "+text1+" de la respuesta, prueva un numero más "+text2;
+            this.responce = "Estás "+text1+" de la respuesta, prueba un número más "+text2+'.';
           }
           this.classe = 'wrong';
-          if(text1 !== "lejos") this.responce = "Prueva un numero más "+text2;
+          if(text1 !== "lejos") this.responce = "Prueba un número más "+text2+'.';
         } else {
           this.image = wrongAswer;
           this.responce = ""

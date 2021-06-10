@@ -1,6 +1,6 @@
 <template>
     <div id="position" :class="$mq">
-        <h2>Arrastra los conecptos con sus definiciones pertinentes</h2>
+        <h2>Arrastra los conceptos con sus definiciones pertinentes.</h2>
         <div id="origin"
             class="flexbox"
             @dragover.prevent
@@ -29,9 +29,9 @@
         
         <b-button @click="reset">Confirmar</b-button>
 
-        <p v-if="responce === 'notcomplete'" style="color:red">Tienes que colocarlas todas!</p>
-        <p v-if="responce === 'tryagain'" style="color:orange">Intentalo de nuevo!</p>
-        <p v-if="responce === 'correct'" style="color:green">Well done!</p>
+        <p v-if="responce === 'notcomplete'" style="color:red">¡Tienes que colocarlas todas!</p>
+        <p v-if="responce === 'tryagain'" style="color:orange">¡Inténtalo de nuevo!</p>
+        <p v-if="responce === 'correct'" style="color:green">¡Muy bien!</p>
     </div>
 </template>
 
@@ -44,8 +44,8 @@ export default {
             responce: '',
             items:[
                 {id:0, title: 'Competencia', def:'Capacidad de participar y aportar en el mundo.', list:1},
-                {id:1, title: 'Autonomía', def:'Ser capaz de valersé por uno mismo, tener independencia personal.', list:1},
-                {id:2, title: 'Pertenencia', def:'Sentimiento de formar parte de un colectivo', list:1},
+                {id:1, title: 'Autonomía', def:'Ser capaz de valerse por uno mismo, tener independencia personal.', list:1},
+                {id:2, title: 'Pertenencia', def:'Sentimiento de formar parte de un colectivo.', list:1},
             ]
         }
     },
