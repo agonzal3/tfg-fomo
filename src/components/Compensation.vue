@@ -2,10 +2,10 @@
     <div id="position">
         <transition name="component-fade">
             <div v-if="show" class ="border1">
-                <h2>¡Has superado el {{items[number].number}} nivel!</h2>
+                <h2>¡Has superado el <span v-html="items[number].number">{{items[number].number}}</span>nivel!</h2>
                 <h4>Aquí tienes tu insignia</h4>
 
-                <p class="insignia">{{items[number].insigne}}</p>
+                <p class="insignia" >{{items[number].insigne}}</p>
                 <transition appear name="bounce">
                     <b-img center :src="items[number].image" alt="Center image"></b-img>
                 </transition>
@@ -32,9 +32,9 @@ export default {
         return{
             counter: 0,
             show:true,
-            items: [{image:concept, number: '1.er', insigne: '¿Qué es la FoMO?'},
-                    {image:reasons, number: '2.o', insigne: '¿Cuál es su origen?'},
-                    {image:consequences, number: '3.er', insigne: 'Consecuencias de la FoMO'}
+            items: [{image:concept, number: '1<sup>.er</sup>', insigne: '¿Qué es la FoMO?'},
+                    {image:reasons, number: '2<sup>.o</sup>', insigne: '¿Cuál es su origen?'},
+                    {image:consequences, number: '3<sup>.er</sup>', insigne: 'Consecuencias de la FoMO'}
             ],
 
         }
@@ -68,13 +68,9 @@ export default {
                 document.getElementById("controles").style.display = "block";
                 let contenido = document.getElementById("contenido").style;
                 contenido.background = "#FAFAFA";
-                if(this.$mq === 'tablet'){
-                    contenido.height = "calc(100vh - 150px)";
-                }
                 if(this.$mq === 'laptop'){
                     contenido.width = "calc(100% - 300px)";
-                }
-                if(this.$mq === 'mobil'){
+                }else if(this.$mq === 'mobil' || this.$mq === 'tablet'){
                     contenido.marginTop = '150px';
                     contenido.height = 'calc(100vh - 150px)';
                 }
@@ -85,11 +81,11 @@ export default {
             document.getElementById("controles").style.display = "none";
             let contenido = document.getElementById("contenido").style;
             contenido.background = "#6699ff";
-            contenido.width = "100%";
-            if(this.$mq === 'tablet'){contenido.height = '100vh';}
-            if(this.$mq === 'mobil'){
-                contenido.marginTop = '0px';
+            if(this.$mq === 'laptop'){
+                contenido.width = "100%";
+            }else if(this.$mq === 'tablet' || this.$mq === 'mobil'){
                 contenido.height = '100vh';
+                contenido.marginTop = '0px';
             }
         }
     },

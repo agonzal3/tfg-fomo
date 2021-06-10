@@ -1,6 +1,6 @@
 <template>
     <div id="position" :style="$mq | mq({mobil: 'height:100%',
-                                        laptop: 'height:80%'})" :class="$mq">
+                                        laptop: 'height:80%',tablet: 'height:80%'})" :class="$mq">
         <flipper
             :width="$mq | mq({
                 mobil: '80%',
@@ -167,11 +167,6 @@ export default {
     margin-bottom: 25px;
 }
 
-.vuelta{
-    border: solid 1px brown;
-    padding: 30px;
-}
-
 .front{
     width: 100%;
     height: 100%;
@@ -218,10 +213,6 @@ export default {
     vertical-align: middle;
     margin: 0 auto;
     text-align: center;
-}
-
-.Hello{
-    background-color: teal;
 }
 
 .content.tablet{

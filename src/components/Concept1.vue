@@ -11,9 +11,9 @@
 
                 <img class="setimages" :class="$mq" :src="lista[counter].imagen">
 
-                <b-container class="bv-example-row">
+                <b-container>
                     <div v-if="counter < lista.length">
-                        <b-row align-h="between">
+                        <b-row style="align-items: center;">
                             <b-col><b-button @click="wrong">{{lista[counter].aswer1}}</b-button></b-col>
                             <!-- <b-col cols="6"><b-button to='/concept/1' variant="outline-primary">{{lista[counter].aswer2}}</b-button></b-col> -->
                             <b-col><b-button @click="correct">{{lista[counter].aswer2}}</b-button></b-col>
@@ -145,14 +145,6 @@ export default {
 
 
 <style scoped>
-
-#leaft{
-  position: absolute;
-  left: 100%;
-  top: 50%;
-  border: 3px solid green;
-  transform: translate(100%, -100%);
-}
 /* Enter and leave animations can use different */
 /* durations and timing functions.              */
 .slide-fade-enter-active {
@@ -166,26 +158,12 @@ export default {
   transform: translateX(10px);
   opacity: 0;
 }
-iframe {
-    pointer-events: none;
-}
+
 img {
     max-width: 300px;
     margin: 20px;
     margin-top: 0px;
 }
 
-.setimages.tablet{
-    max-width:300px;
-    max-height:200px;
-}
-
-
-.resolution.tablet > p{
-    font-size: 17px;
-}
-.resolution.tablet > img{
-    max-height:250px;
-}
 
 </style>

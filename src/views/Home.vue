@@ -36,12 +36,15 @@
   top: 50%;
   /* border: 3px solid green; */
   transform: translate(-50%, -50%);
-  width: 40%;
   /* height: 75%; */
   text-align: center;
 }
 .home.mobil {
   width: 80%;
+
+}
+.home.tablet {
+  width: 60%;
 
 }
 .home.laptop {

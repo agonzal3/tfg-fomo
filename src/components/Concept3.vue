@@ -8,9 +8,10 @@
       <b-container fluid>
         <b-row>
           <b-col>
-            <b-input-group  size="lg" append="h" style="justify-content: center">
+            <b-input-group size="lg" append="h" style="justify-content: center">
                     <vue-numeric-input
                       id="style1"
+                      :class="$mq"
                       :min="0" 
                       :max="24" 
                       :value="hours" 
@@ -24,6 +25,7 @@
             <b-input-group  size="lg" append="min" style="justify-content: center">
               <vue-numeric-input
                       id="style2"
+                      :class="$mq"
                       :min="0" 
                       :max="50" 
                       :value="minutes" 
@@ -136,21 +138,28 @@ export default {
   transform: translateX(10px);
   opacity: 0;
 }
-input{
-  font-size: 50px;
-}
-#style1{
+
+#style1.tablet, #style1.laptop{
   font-size: 40px;
 }
-#style2{
+#style1.mobil{
+  font-size: 30px;
+}
+
+#style2.tablet, #style2.laptop{
   font-size: 40px;
 }
+#style2.mobil{
+  font-size: 30px;
+}
+
 .correct{
   color: green;
 }
 .wrong{
   color: red;
 }
+
 h4{
   margin-top: 10px;
 }

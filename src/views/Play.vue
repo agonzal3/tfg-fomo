@@ -106,7 +106,7 @@ export default {
           'Con la primera respuesta lo vas a entender enseguida.'],
           responcebutton7:[{button1:'No termino de entenderlo.',button2:'Por supuesto.'},{button2:'¡De acuerdo, adelante!'}],
           text8:['¡ENHORABUENA! \n Has descubierto uno de los problemas que ha desolado a esta sociedad y aunque no sea el único por algún lado hay que empezar.',
-          'Ahora sabemos qué es, cñomo se origina y cuáles son sus consecuencias. Pero para frenar la FoMO y así hacer que el mundo sea un lugar mejor. ¿Qué necesitamos?',
+          'Ahora sabemos qué es, cómo se origina y cuáles son sus consecuencias. Pero para frenar la FoMO y así hacer que el mundo sea un lugar mejor. ¿Qué necesitamos?',
           'Quizás un poco exagerado, ¿no crees? \n ¿No sería mejor encontrar la manera de evitar o reducir los niveles de FoMO?'],
           responcebutton8:[{button1:'Siguiente'}, {button1:"Eliminar la tecnología", button2:"Encontrar la manera de como evitar o reducir la FoMO."}, {button2:"Supongo que sí"}]
         }
@@ -251,19 +251,13 @@ export default {
   height:100vh;
 }
 
-#contenido.tablet{
-  width: 80%;
-  height: calc(100vh - 150px);
-  margin-top: 150px;
-}
-#contenido.mobil {
+#contenido.tablet, #contenido.mobil{
   width: 100%;
   height: calc(100vh - 150px);
   margin-top: 150px;
-
 }
 
-#contenido.mobil:after {
+#contenido.mobil:after, #contenido.tablet:after {
     content: "";
     display: inline-block;
     height: 100%;

@@ -107,6 +107,7 @@ export default {
     width: 90%;
 }
 
+
 div > p{
     margin-top:7%;
 }

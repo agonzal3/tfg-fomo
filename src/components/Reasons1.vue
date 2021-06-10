@@ -102,39 +102,39 @@ export default {
 
 <!-- BaseTimer.vue -->
 <style scoped>
-.drop-zone {
-    background-color: #eee;
-    margin-right: 10px;
-    min-height: inherit;
-    min-width: 200px;
-    color: black;
-}
-.drop-zone.mobil {
-    min-width: 40%;
-}
+    .drop-zone {
+        background-color: #eee;
+        margin-right: 10px;
+        min-height: inherit;
+        min-width: 200px;
+        color: black;
+    }
+    .drop-zone.mobil {
+        min-width: 40%;
+    }
 
-  .drag-el {
-    background-color: #eee;
-    margin: 10px;
-    padding: 5px;
-    width: 33%;
-  }
-  .dragTotal {
+    .drag-el {
+        background-color: #eee;
+        margin: 10px;
+        padding: 5px;
+        width: 33%;
+    }
+    .dragTotal {
       border-radius: 10px;
       background-color:dimgray;
       padding: 15px;
       margin-top: 15px;
       color: white;
-  }
+    }
 
-.flexbox{
-    border-radius: 10px;
-    display: flex;
-    /* margin:10px; */
-    background-color: #FFA525;
-    height: 60px;
-}
-  button{
-      margin-top: 30px;
-  }
+    .flexbox{
+        border-radius: 10px;
+        display: flex;
+        /* margin:10px; */
+        background-color: #FFA525;
+        height: 60px;
+    }
+    button{
+        margin-top: 30px;
+    }
 </style>
