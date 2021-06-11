@@ -1,33 +1,38 @@
 <template>
     <div id="position" :class="$mq">
         <h2>Arrastra los conceptos con sus definiciones pertinentes.</h2>
-        <div id="origin"
-            class="flexbox"
-            @dragover.prevent
-            @drop.prevent="drop">
-            <div class='drag-el'
-                v-for='item in items' 
-                :key='item.id'
-                :id="'card-'+item.id"
-                :draggable=true
-                @dragstart="dragStart"
-                @dragover.stop>{{item.title}}</div>
-        </div>
-        
-        <div>
-            <div v-for='item in items' :key='item.id'>
-                <div class='dragTotal' style="display: flex">
-                    <div class='drop-zone' :class="$mq"
-                        :id="item.title"
-                        @dragover.prevent
-                        @drop.prevent="drop">
-                    </div>
-                    {{item.def}}
+        <draggable class="flexbox" :list="items" group="people" @change="log">
+            <div class='drag-el' v-for="item in items" :key="item.totle">{{item.name}}</div>
+        </draggable>
+
+        <div class='dragTotal' style="display: flex">
+            <draggable :disabled="items2[0].correct" id=id0 class='drop-zone' :class="$mq" :list="lists[0]" group="people" @change="log" :empty-insert-threshhold="500">
+                <div class="centerinput" v-for="element in lists[0]" :key="element.name">
+                    {{ element.name }}
                 </div>
-            </div>
+            </draggable>
+            Capacidad de participar y aportar en el mundo.
+        </div>
+
+        <div class='dragTotal' style="display: flex">
+            <draggable :disabled="items2[1].correct" id=id1 class='drop-zone' :class="$mq" :list="lists[1]" group="people" @change="log" :empty-insert-threshhold="500">
+                <div class="centerinput" v-for="element in lists[1]" :key="element.name">
+                    {{ element.name }}
+                </div>
+            </draggable>
+            Ser capaz de valerse por uno mismo, tener independencia personal.
         </div>
         
-        <b-button @click="reset">Confirmar</b-button>
+        <div class='dragTotal' style="display: flex">
+            <draggable :disabled="items2[2].correct" id=id2 class='drop-zone' :class="$mq" :list="lists[2]" group="people" @change="log" :empty-insert-threshhold="500">
+                <div class="centerinput" v-for="element in lists[2]" :key="element.name">
+                    {{ element.name }}
+                </div>
+            </draggable>
+            Sentimiento de formar parte de un colectivo.
+        </div>
+        
+        <b-button @click="correct">Confirmar</b-button>
 
         <p v-if="responce === 'notcomplete'" style="color:red">¡Tienes que colocarlas todas!</p>
         <p v-if="responce === 'tryagain'" style="color:orange">¡Inténtalo de nuevo!</p>
@@ -36,17 +41,28 @@
 </template>
 
 <script>
+import draggable from 'vuedraggable';
+
 export default {
     name:'Reason1',
+    components: {
+            draggable,
+    },
     data(){
         return{
             intro: 'Las redes sociales son muy populares entre los jóvenes, porque nosotros los humanos somos animales …',
             responce: '',
             items:[
-                {id:0, title: 'Competencia', def:'Capacidad de participar y aportar en el mundo.', list:1},
-                {id:1, title: 'Autonomía', def:'Ser capaz de valerse por uno mismo, tener independencia personal.', list:1},
-                {id:2, title: 'Pertenencia', def:'Sentimiento de formar parte de un colectivo.', list:1},
-            ]
+                {id:0, name: 'Competencia', def:'Capacidad de participar y aportar en el mundo.', list:1},
+                {id:1, name: 'Autonomía', def:'Ser capaz de valerse por uno mismo, tener independencia personal.', list:1},
+                {id:2, name: 'Pertenencia', def:'Sentimiento de formar parte de un colectivo.', list:1},
+            ],
+            items2:[
+                {id:0, name: 'Competencia', def:'Capacidad de participar y aportar en el mundo.', correct: false},
+                {id:1, name: 'Autonomía', def:'Ser capaz de valerse por uno mismo, tener independencia personal.', correct: false},
+                {id:2, name: 'Pertenencia', def:'Sentimiento de formar parte de un colectivo.', correct: false},
+            ],
+            lists: [[],[],[]]
         }
     },
     mounted(){
@@ -69,31 +85,38 @@ export default {
             event.dataTransfer.setData('card_id',target.id);
 
         },
-        reset(){
-            const bar = document.getElementById('origin');
-            this.responce = 'nothing';
-            if(bar.childNodes.length === 0){
-                this.items.forEach((key,index)=>{
-                    const title = document.getElementById(key.title);
-                    if(title.id === title.textContent){
-                        title.style.backgroundColor = '#44C850';
-                        title.childNodes[0].style.backgroundColor = '#44C850';
-                        title.childNodes[0].draggable = false;
+        correct(){
+            // console.log('hello');
+            if(this.lists[0].length===0 ||this.lists[1].length===0||this.lists[2].length===0){
+                this.responce = 'notcomplete';
+            }else{
+                this.responce = 'nothing';
+                this.items2.forEach((value, index) => {
+                    const idcode = 'id'+index;
+                    const name = document.getElementById(idcode);
+                    if(this.lists[index][0].id === value.id){
+                        console.log('correct')
+                        name.style.backgroundColor = '#44C850';
+                        name.childNodes[0].style.backgroundColor = '#44C850';
+                        value.correct = true;
                     }else{
-                        title.style.backgroundColor = '#eee';
-                        title.childNodes[0].style.backgroundColor = '#eee';
-                        bar.appendChild(title.childNodes[0]);
+                        console.log('wrong')
+                        this.items.push(this.lists[index][0])
+                        this.lists[index].pop();
                         this.responce = 'tryagain';
                     }
                 });
-                if(this.responce === 'nothing') {
+                if(this.responce === 'nothing'){
                     this.responce = 'correct';
                     setTimeout(() => this.$emit('enlarge-text'), 1000);
                 }
-            } else{
-                this.responce = 'notcomplete';
+
             }
-           
+            
+            
+        },
+        log(evt) {
+            console.log(evt);
         }
 
     }
@@ -105,10 +128,11 @@ export default {
     .drop-zone {
         background-color: #eee;
         margin-right: 10px;
-        min-height: inherit;
+        height: 60px;
         min-width: 200px;
         color: black;
     }
+
     .drop-zone.mobil {
         min-width: 40%;
     }
@@ -136,5 +160,10 @@ export default {
     }
     button{
         margin-top: 30px;
+    }
+
+    .centerinput{
+        position: relative;
+        margin-top: calc(30px - 8px);
     }
 </style>

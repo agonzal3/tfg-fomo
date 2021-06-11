@@ -26,7 +26,9 @@
             <div class="back" slot="back">
                 <div>
                     <h2 id="title">{{resolution}}</h2>
-                    <h3>ES {{items[backcount].res}}</h3>
+                    <h3>ES <span v-if="items[backcount].res === false">FALSO</span>
+                        <span v-else>VERDADERO</span>
+                    </h3>
                     <h4>{{items[backcount].solution.title}}</h4>
                     <p>{{items[backcount].solution.text}}</p>
 

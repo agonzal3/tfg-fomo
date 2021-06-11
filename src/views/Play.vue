@@ -46,19 +46,7 @@
         <Consequence v-if="pasos === 16" v-on:enlarge-text="onEnlargeText"/>
         <Compensation v-if="pasos === 17" :number=2 @enlarge-text="onEnlargeText"/>
         <Textinteract v-if="pasos === 18" v-bind:text="text8" v-bind:responcebutton="responcebutton8" v-on:enlarge-text="onEnlargeText"/>
-        
-        <!-- <Reasontext v-if="pasos === 0" v-on:enlarge-text="onEnlargeText"/> -->
-        <!-- <b-button @click="start()">Start</b-button> -->
-
-        <!-- <Compensation v-if="pasos === 1" @enlarge-text="onEnlargeText"/> -->
-        
-
       </transition>
-
-      <!-- <HelloWorld v-if="steps === 2" /> -->
-      <!-- <transition name="component-fade" mode="out-in">
-        <component v-bind:is="view" v-on:enlarge-text="onEnlargeText"></component>
-      </transition> -->
 
     </div>
       <!-- </b-row>
@@ -97,7 +85,7 @@ export default {
           text3:['El mundo se ha vuelto un lugar más oscuro provocado por estas situaciones. Este problema lo vamos a ir desengranando paso a paso. \n Para saber en qué punto estamos te reto a acertar la siguiente pregunta en menos de tres intentos.'],
           responcebutton3:[{button2:'Acepto el reto.'}],
           text4:['Entramos en el juego de las redes sociales para satisfacer nuestras necesidades pero, ¿realmente se satisfacen?','Según investigaciones importantes, para estar satisfecho se tienen que cumplir 3 necesidades psicológicas: \n Competencia, Autonomía y Pertenencia \n ¿Sabrías asociar el significado de cada una de ellas?'],
-          responcebutton4:[{button1:'Vamos a descubrirlo'},{button2:'Vamos a descubrirlo'}],
+          responcebutton4:[{button1:'Ummmmm, buena pregunta.'},{button2:'Vamos a descubrirlo'}],
           text5:['Ahora que sabemos qué se necesita para estar satisfecho también podemos deducir cuando no lo estamos, ¿verdad?','No estaremos satisfechos, hasta que no te sientas competente, autónomo y tengas el sentimiento de pertenencia.'],
           responcebutton5:[{button1:'No estoy seguro de seguirte.', button2:'¡Claro que sí!'}, {button2:'Ahora sí que lo entiendo.'}],
           text6:['Sabiendo esto, vamos a ver si a partir de situaciones reales puedes deducir si son causas o signos de FoMO. \n En los próximos 60 segundos tendrás que decidir si las siguientes afirmaciones/situaciones pueden ser posibles síntomas de la FoMO o no.'],
