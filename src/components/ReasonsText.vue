@@ -58,7 +58,7 @@
     </div>
     <transition name="slide-fade">
         <div style="margin-top:50px;margin-bottom:50px;" v-if="items[2].show">
-              <b-button @click="$emit('enlarge-text')" variant="light">{{items[2].button}}</b-button>
+              <b-button @click="$emit('enlarge-text')">{{items[2].button}}</b-button>
             <!-- <div v-else-if="item.finalbutton"></div> -->
         </div>
     </transition>

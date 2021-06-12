@@ -118,6 +118,7 @@ export default {
     },
     methods:{
         onClick (bool) {
+            console.log('onClick');
             this.flipped = !this.flipped;
             if(this.frontcount !== 0){
                 this.backcount++;

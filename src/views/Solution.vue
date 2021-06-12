@@ -49,7 +49,11 @@
             <div v-if="actualPage === 2">
                 <h5>Si has llegado hasta aquí significa que has terminado el "juego".</h5>
 
-                <p>Para terminar me gustaría robarte 10 minutos más respondiendo el siguiente cuestionario.</p>
+                <p>Para terminar me gustaría robarte 10 minutos más respondiendo esta enquesta de evaluación.
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScK7yGG1r-8PNd3TMySSD_k_2MqmgLGicdbqb4oYEEm7QOqiQ/viewform" target="_blank">
+                        <img style="height:36px;" src="../assets/googleforms.png">
+                    </a>
+                </p>
 
                 <p>Si por otra parte quiere volver a jugar ... <br>
                 <b-button class="home" @click="home">Volver al juego</b-button></p> 

@@ -8,7 +8,7 @@
             :shuffle="false"
             initial-action="typing"
             :pre-type-delay="50"
-            :type-delay="20"
+            :type-delay="30"
             :pre-erase-delay="2000"
             :erase-delay="100"
             erase-style="backspace"
